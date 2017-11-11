@@ -1,0 +1,2 @@
+StudentId,StudentName,STD,Division,FatherName,FatherMobileNo,MotherName,MotherMobileNo,GaurdianName,GaurdianMobileNo,PickupLocation,DropLocation,ScheduleName,dropschedulename ,status,createddate,createdby,modifieddate,modifiedby
+123,rupesh,12,b,rajesh,943234234,reeman,234234,kumar,ramesh,test,test,test,,Active,13-12-2017,system,,
