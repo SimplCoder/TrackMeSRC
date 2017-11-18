@@ -38,20 +38,7 @@
 				  <div class="navbar-collapse collapse" id="navbar">
 					<ul class="nav navbar-nav">
 					 <c:if test="${cg:checkForModule(currentUser,'Live')}"> 
-					  <li id="hdr_live" class="dropdown"> <
-					  
-					  	<ul  role="menu" class="dropdown-menu">
-						 
-						  <li id="hdr_liveList" ><a href="home"><i class="fa fa-eye"></i>Live</a></li>
-						 
-						  <li id="hdr_liveMap"><a href="homedetails"><i class="fa fa-info-circle"></i>Live Info</a></li>
-						  
-					</ul>
-					  
-					  
-					  
-					  
-					  </li> </c:if>
+					  <li id="hdr_live"> <a aria-expanded="false" role="button" href="home">Live</a> </li> </c:if>
 					 
 					  <c:if test="${cg:checkForModule(currentUser,'Vehicle Information')}">
 					  <li id="hdr_vehicle" class="dropdown"> <a id="hdr_vehicleLink" aria-expanded="false" role="button" href="#" class="dropdown-toggle">Vehicle Information<span class="caret"></span></a>

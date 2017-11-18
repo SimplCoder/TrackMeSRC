@@ -81,14 +81,15 @@
 
                     
 
-                    <div class="graph-in" style="padding-top: 2%;">
+                    <div class="graph-in" >
 
-                        <div class="graph-img" style="font-size: 20px;">
-                            <div class="graph-txt" style="font-size: 30px;"><span id="vehcileCountShow"></span></div>
+                       
+                        <div class="graph-img" >
+                           <canvas id="doughnutChart6" height="100"></canvas>
                         </div>
 
                         <div class="graph-txt">
-                            Unit Count
+                            Total Unit Count
 
                         </div>
                     </div>
@@ -115,10 +116,11 @@
 
                                                             <th width="16%" align="center" valign="middle">Vehicle No</th>
                                                             <th width="14%" align="center" valign="middle">Status</th>
+                                                            <th width="14%" align="center" valign="middle">AC</th>
                                                             <th width="4%" align="center" valign="middle">Speed</th>
                                                             <th width="42%" align="center" valign="middle">Location</th>
                                                             <th width="15%" align="center" valign="middle">Date/Time</th>
-                                                            <th width="4%" align="center" valign="middle">Dist. KM</th>                     
+                                                            <th width="4%" align="center" valign="middle">Dist</th>                     
                                                             <th width="4%" align="center" title="(dd:hh:mm)" valign="middle">Idle Time</th>
 
                                                         </tr>
@@ -464,6 +466,23 @@
                                 }
                             },
                             {
+                                data: "acstatus"
+                                 ,
+                                "render": function(data, type, full, meta) {
+                                    
+                                //	updateMarker(allVehicleAjaxArr, data);
+                                	var bgColor = '#1e8427';
+                                    
+                                	 if (data == 'AC OFF') {
+                                         bgColor = '#d60002';
+                                      	}
+                                	 if (data == null){
+                                	 	return '<div style="background-color:#ffffff"><span  style="color:#fff;"><span></div>';
+                                	 }
+                                    return '<div style="background-color:'+bgColor+'"><span  style="color:#fff;">' + data + '<span></div>';
+                                } 
+                            }, 
+                            {
                                 data: "speed"
                             },
                             {
@@ -490,8 +509,8 @@
                         },
                         ordering: false,
                         lengthMenu: [
-                            [10, 25, 50, -1],
-                            [10, 25, 50, "All"]
+                            [-1,10, 25, 50],
+                            ["All",10, 25, 50]
                         ],
                         buttons: [{
                                 extend: 'colvis',
@@ -505,7 +524,15 @@
                             }, {
                                 extend: 'pdfHtml5',
                                 text: ''
+                            }, {
+                            	text: ' <span style="font-size: 13px" ><b>Map View</b><span> ',
+                            	titleAttr:'Switch To Map View',
+                                action: function ( e, dt, node, config ) {
+                                	window.location.href = "home";
+
+                                }
                             }
+
                         ],
                         select: {
                             style: 'single'
@@ -912,7 +939,6 @@
         var igniOn = parseInt(data.result["0"].ignitionOn);
         var igniOff = parseInt(data.result["0"].ignitionOff);
 
-        $("#vehcileCountShow").text(totalVeh);
         var doughnutData = [{
                 value: totalVeh - igniOff,
                 labelFontSize: '2',
@@ -1029,6 +1055,20 @@
 
         var ctx4 = document.getElementById("doughnutChart5").getContext("2d");
         var myNewChart4 = new Chart(ctx4).Doughnut(doughnutData4, doughnutOptions);
+
+
+        var doughnutData6 = [
+
+            {
+                value: totalVeh ,
+                color: "#d9d9d9",
+                highlight: "#d9d9d9",
+                label: ""
+            }
+        ];
+
+        var ctx6 = document.getElementById("doughnutChart6").getContext("2d");
+        var myNewChart6 = new Chart(ctx6).Doughnut(doughnutData6, doughnutOptions);
 
 
 

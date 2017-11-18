@@ -60,7 +60,8 @@ public class MapLatlngDAOImpl implements MapLatlngDAO {
 		strBuf.append(" fetch first 1 row only) as driverName ");
 		strBuf.append(" ,(select dm1.contact1 from drivermaster dm1 left join driverconf dc1 on dm1.id=driverid where dc1.vehicleno = vm.vehicleno and "); 
 		strBuf.append(" to_timestamp((to_char(gsm.datetimedate+gsm.datetime, 'MM/DD/YYYY HH:MI PM')),'MM/DD/YYYY HH:MI PM') between to_timestamp(dc1.startdate||' '||dc1.starttime,'MM/DD/YYYY HH:MI PM') and to_timestamp(dc1.enddate||' '|| dc1.endtime,'MM/DD/YYYY HH:MI PM') ");
-		strBuf.append(" fetch first 1 row only) as driverPhone  ");
+		strBuf.append(" fetch first 1 row only) as driverPhone,  ");
+		strBuf.append(" (case when gsm.status2=1 then 'AC ON' when gsm.status2=0 then 'AC OFF' end ) as acStatus  ");
 		strBuf.append(" from vehiclemaster vm join gsmstatus gsm on vm.unitno= gsm.unitNo and LOWER(vm.status)=LOWER('ACTIVE') ");
 		strBuf.append(" left join statusdesc sd on  gsm.status  = sd.code ");
 		strBuf.append(" left join devicemaster dm on cast(gsm.unitno as text) = dm.device_no ");
