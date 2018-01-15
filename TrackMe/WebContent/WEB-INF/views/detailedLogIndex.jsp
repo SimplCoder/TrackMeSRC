@@ -22,6 +22,10 @@
   <div id="page-wrapper2" class="gray-bg" style="top:112px !important">
       <form:form class="form-inline" action="Vehicle_DetailedLogs" commandName ="LogIndexSearch" >
       
+                <div id="data_3" class="form-group" >
+          <span id ='LogIndexSearchSpan' style="font-size:12pt"><b>Vehicle No. </b> :  ${vehicleName} &nbsp;&nbsp;&nbsp;</span>
+     </div>
+      
           <div id="data_1" class="form-group">
                                         <label>From Date:</label>
                                        <form:input  autocomplete="off" type ="text" path="fromDate" class="filthypillow-demo"></form:input>
@@ -34,9 +38,7 @@
           
          &nbsp;&nbsp;&nbsp;<input class="btn  btn-primary" type="submit" value="Go">
           <input class="btn btn-primary" id ="resetDates"  type="button" value="reset">
-          <div id="data_3" class="form-group" >
-          &nbsp;&nbsp;&nbsp;    <span id ='LogIndexSearchSpan' style="font-size:12pt"><b>Vehicle No. </b> :  ${vehicleName} &nbsp;&nbsp;&nbsp;</span>
-     </div>
+
      </form:form>
      
     <!-- Rohan Code End 4 --> 
@@ -530,12 +532,7 @@
                      
                  },
      			buttons: [
-     {
-         extend: 'colvis',
-        text :'',
-         columns: ':gt(1)'
-     },
-
+    
      {
          extend: 'excelHtml5',
          text :''
@@ -1338,7 +1335,8 @@ $("#resetDates").click(function(){
   font-size:12pt;
 }
 #LogIndexSearch {
-padding-left: 16%;
+padding-left: 1%;
+    border-style: groove;
 text-align: center; 
 font-size:12pt; 
 }

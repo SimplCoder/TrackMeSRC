@@ -26,7 +26,12 @@
        <div id="page-wrapper2" class="gray-bg">
             <div class="rowx wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-12">
-                    <h2>Company Entry </h2>
+                   <c:if test="${CompanyMaster.editFlag==true }">
+                    <h2>Company Modification </h2>
+                    </c:if>
+                       <c:if test="${CompanyMaster.editFlag==false }">
+                      <h2>Company Entry </h2>
+                       </c:if>
                 </div>
             </div>
             <div class="wrapper wrapper-content  animated fadeInRight">
@@ -39,10 +44,14 @@
                             <div class="form-group col-sm-6">
                                                                            <label>Company Name</label>
                                           
-                                          	<form:input type="text" class="form-control" required="true" path="companyName"></form:input>
+                                       
 									
                                           
                                             <c:if test="${CompanyMaster.editFlag==true }">
+						            		
+						            		   	<form:input type="text" class="form-control" required="true" path="companyName" readonly="true"></form:input>
+									
+						            		
 						            		<form:hidden path="id"/>
 									<form:hidden path="logoPath"/>
 									
@@ -52,6 +61,8 @@
 						
 							</c:if>
 							<c:if test="${CompanyMaster.editFlag==false }">
+							   	<form:input type="text" class="form-control" required="true" path="companyName"></form:input>
+									
 							 	   	<form:hidden path="editFlag" value="${CompanyMaster.editFlag}"/>
                                    
 							</c:if>

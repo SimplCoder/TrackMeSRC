@@ -100,8 +100,8 @@
   <script>
   var vehicleIOJSON = ${vehicleIOJSON};
       $(document).ready(function () {
-    	  $('#hdr_vehicle').addClass("dropdown active");
-  		$('#hdr_vehicleLink').click();
+    	  $('#hdr_configuration').addClass("dropdown active");
+  		$('#hdr_configuration_link').click();
   		$('#hdr_vehicleIO').addClass("active");
   		$('#successMessage').fadeOut(5000);
 		$('#errorMessage').fadeOut(5000);

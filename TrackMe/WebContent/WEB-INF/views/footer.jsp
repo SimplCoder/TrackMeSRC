@@ -21,7 +21,7 @@
           </form>
         </div>
         <div class="col-xs-6 text-right">
-          <div class="copy-txt"><strong>Copyright</strong> Adhata Technologies &copy; 2016 </div>
+           <div class="copy-txt"><strong>Copyright</strong> Adhata Technologies LLP &copy; 2017-18 </div>
         </div>
       </div>
     </div>

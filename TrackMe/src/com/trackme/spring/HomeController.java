@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -37,6 +38,8 @@ import com.trackme.spring.service.UserMasterService;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private final String LANDING_PAGE = "liveIndexPage";
+	private final String LIVE_MAP_PAGE = "index";
 	
 	@Autowired
 	private MapLatlngService mapLatlngService;
@@ -60,7 +63,36 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
 				DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
-		List mapLatlngList = mapLatlngService.getAllVehicleLocation(userMasterService.getCurrentUserUsingPrinciple(request));
+		String allVehicleLocationJson = getAllVehicleLiveDataJSON(userMasterService.getCurrentUserUsingPrinciple(request));
+		if(allVehicleLocationJson == null){
+			model.addAttribute("errorMsg", "No data found.");
+		}
+		// System.out.println("JSON=== "+allVehicleLocationJson);
+		model.addAttribute("serverTime", formattedDate);
+		model.addAttribute("allVehicleLocation", allVehicleLocationJson);
+		model.addAttribute("VehicleSearchForm",new VehicleSearchForm());
+		return LANDING_PAGE;
+	}
+	
+	@RequestMapping(value = "/getLiveMap", method = RequestMethod.GET)
+	public String getLiveMap(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response){
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
+				DateFormat.LONG, locale);
+		String formattedDate = dateFormat.format(date);
+		String allVehicleLocationJson = getAllVehicleLiveDataJSON(userMasterService.getCurrentUserUsingPrinciple(request));
+		if(allVehicleLocationJson == null){
+			model.addAttribute("errorMsg", "No data found.");
+		}
+		// System.out.println("JSON=== "+allVehicleLocationJson);
+		model.addAttribute("serverTime", formattedDate);
+		model.addAttribute("allVehicleLocation", allVehicleLocationJson);
+		model.addAttribute("VehicleSearchForm",new VehicleSearchForm());
+		return LIVE_MAP_PAGE;
+	}
+	
+	private String getAllVehicleLiveDataJSON(UserMaster userMaster){
+		List mapLatlngList = mapLatlngService.getAllVehicleLocation(userMaster);
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		String allVehicleLocationJson = null;
@@ -68,14 +100,9 @@ public class HomeController {
 			allVehicleLocationJson = objectMapper
 					.writeValueAsString(mapLatlngList);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception Occured: "+e.getMessage());
 		}
-		// System.out.println("JSON=== "+allVehicleLocationJson);
-		model.addAttribute("serverTime", formattedDate);
-		model.addAttribute("allVehicleLocation", allVehicleLocationJson);
-		model.addAttribute("VehicleSearchForm",new VehicleSearchForm());
-		return "index";
+		return allVehicleLocationJson;
 	}
 
 	@RequestMapping(value = "/Vehicle_DetailedLogs")

@@ -24,7 +24,7 @@
        <div id="page-wrapper2" class="gray-bg">
             <div class="rowx wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-6">
-                    <h2>Role View</h2>
+                    <h2>Role Info</h2>
                 </div>
                <div class="col-sm-6">
                     <div class="text-right">

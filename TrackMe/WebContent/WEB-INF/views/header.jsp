@@ -41,7 +41,7 @@
 					  <li id="hdr_live"> <a aria-expanded="false" role="button" href="home">Live</a> </li> </c:if>
 					 
 					  <c:if test="${cg:checkForModule(currentUser,'Vehicle Information')}">
-					  <li id="hdr_vehicle" class="dropdown"> <a id="hdr_vehicleLink" aria-expanded="false" role="button" href="#" class="dropdown-toggle">Vehicle Information<span class="caret"></span></a>
+					  <li id="hdr_vehicle" class="dropdown"> <a id="hdr_vehicleLink" aria-expanded="false" role="button" href="#" class="dropdown-toggle">Vehicle Info<span class="caret"></span></a>
 						<ul  role="menu" class="dropdown-menu">
 						  <c:if test="${cg:checkForLink(currentUser,'Vehicle View')}"> 
 					 
@@ -52,8 +52,6 @@
 					 
 						  <li id="hdr_vehicleInfo" ><a href="VehicleInfo"><i class="fa fa-info-circle"></i>Vehicle information</a></li></c:if>
 						  
-						   <c:if test="${cg:checkForLink(currentUser,'Vehicle I/O List')}"> 
-					 <li id="hdr_vehicleIO"><a href="VehicleIOs"><i class="fa fa-list-ul"></i>Vehicle I/O List</a></li></c:if>
 					</ul>
 					  </li></c:if>
 					   <c:if test="${cg:checkForModule(currentUser,'Reports')}">
@@ -89,6 +87,11 @@
 						<c:if test="${cg:checkForLink(currentUser,'No Movement')}">  <li id="hdr_NoMovement"><a href="Movements"> <i class="fa fa-stop"></i>No Movement</a></li></c:if>
 						 <c:if test="${cg:checkForLink(currentUser,'Company')}">   <li id="hdr_CompanyMaster"><a href="CompanyMasters"> <i class="fa fa-stop"></i>Company</a></li></c:if>
 					<c:if test="${cg:checkForLink(currentUser,'Device Master')}">	<li id="hdr_DeviceMasters"><a href="DeviceMasters"> <i class="fa fa-car"></i>Device Master</a></li></c:if>
+						
+								  
+						   <c:if test="${cg:checkForLink(currentUser,'Vehicle I/O List')}"> 
+					 <li id="hdr_vehicleIO"><a href="VehicleIOs"><i class="fa fa-list-ul"></i>Vehicle I/O List</a></li></c:if>
+				
 						 
 						</ul>
 					  </li>

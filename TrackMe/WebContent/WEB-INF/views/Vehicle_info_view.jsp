@@ -47,19 +47,13 @@
                                             <thead>
                                                 <tr class="leftMenu">
                                                     <th width="15%" align="center" valign="middle">Vehicle No/ Name</th>
-                                                    <th width="7%" align="center" valign="middle">Device No</th>
-                                                    <th width="7%" align="center" valign="middle">Vehicle Group</th>
+                                                    <th width="7%" align="center" valign="middle">Group</th>
                                                 
                                                     
                                                     <th width="11%" align="center" valign="middle">Phone</th>
                                                     <th width="10%" align="center" valign="middle">Email</th>
                                                     <th width="11%" align="center" valign="middle">Address</th>
-                                                    <th width="7%" align="center" valign="middle">City</th>
-                                                    <th width="10%" align="center" valign="middle">Created By</th>
-                                                    <th width="8%" align="center" valign="middle">Created Dt.</th>
-                                                    <th width="10%" align="center" valign="middle">Modify By </th>
-                                                    <th width="8%" align="center" valign="middle">Modify Dt.</th>
-												
+                                                 
                                                 </tr>
                                             </thead>
 											
@@ -116,18 +110,22 @@ var vehicleJson = ${vehicleMastersJSON};
         	data:vehicleJson,
             columns:[
                    
-                     {data: "vehicleNo"},
-                     {data: "unitNo"},
+                     {data: "vehicleNo",
+                    	 
+                    	 "render": function(data, type, full, meta) {
+                             
+                         
+                         	
+                             return '<div ><a href="addNoVehicleServices" target="_blank" title="Vehicle Service"><img  style="width:15px;height:15px;"  src="html/images/plus.png"></a>&nbsp; &nbsp <b>' + data + '</b></div>';
+                         }
+                     
+                     
+                     },
+                    
                      {data: "groupName"},
                      {data: "ownerContact1"},
                      {data: "ownerEmail"},
-                     {data: "ownerAddress1"},
-                     {data: "ownerCity"},
-                     {data: "createdBy"},
-                     {data: "createdOnShow"},
-                     {data: "modifiedBy"},
-                     {data: "modifiedOnShow"}
-                     
+                     {data: "ownerAddress1"}
                
                    
                      

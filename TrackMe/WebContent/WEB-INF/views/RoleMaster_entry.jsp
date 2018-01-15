@@ -26,7 +26,11 @@
        <div id="page-wrapper2" class="gray-bg">
             <div class="rowx wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-12">
-                    <h2>Role Entry </h2>
+                <c:if test="${RoleMaster.editFlag==true }">
+                    <h2>Role Modification </h2>
+                    </c:if>
+                    <c:if test="${RoleMaster.editFlag==false }"> <h2>Role Entry </h2>
+                    </c:if>
                 </div>
             </div>
             <div class="wrapper wrapper-content  animated fadeInRight">
@@ -39,11 +43,16 @@
                             <div class="form-group col-sm-12 ">
                              <div class="form-group col-sm-6 ">
                                                                            <label>Role:</label>
-                           
-                                                                          
+                                                    <c:if  test="${RoleMaster.editFlag == true}">
+                                                            	<form:input style="width:350px;" type="text" class="form-control"  required="true" path="role" readonly="true"></form:input>
+									
+                                                    </c:if>
+                                                    <c:if test="${RoleMaster.editFlag==false }">
+                                                            	<form:input type="text"  style="width:350px;" class="form-control" required="true" path="role"></form:input>
+									
+                                                    </c:if>         
                                           
-                                          	<form:input type="text" class="form-control" required="true" path="role"></form:input>
-									</div>
+                                  </div>
                                           
                                             <c:if test="${RoleMaster.editFlag==true }">
 						            		<form:hidden path="id"/>
@@ -65,7 +74,7 @@
                            
                               <div class="form-group col-sm-3">
                                 <div class="clearfix"></div>
-                                <label for="checkbox" class="checkbox-inline">${link.name} </label>
+                                <label for="checkbox" style="width:150px;" class="checkbox-inline">${link.name} </label>
                                 <form:checkbox class="i-checks" path="linksId" value="${link.id}" style="text-align: center; vertical-align: middle;"/>
                                </div>
                   

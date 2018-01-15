@@ -9,7 +9,7 @@
     <link href="html/css/css.css" rel="stylesheet" type="text/css" />
     <link href="html/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"> 
     <link href="html/css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="html/css/animate.css" rel="stylesheet">
     <link href="html/css/style1.css" rel="stylesheet">
@@ -35,6 +35,23 @@
 	z-index: 9999;
 	background: url(html/images/loader4.gif) center no-repeat #fff;
 }
+	
+	.padding-bottom-50 {
+	   padding-bottom: 10px;
+	}
+	
+	.linkButton {
+	    display: block;
+	    width: 85px;
+	    height: 25px;
+	    background: #4E9CAF;
+	    padding: 10px;
+	    text-align: center;
+	    border-radius: 5px;
+	    color: white;
+	    font-size: 100% !important;
+	    font-weight: bold;
+	}
 </style>
 
 </head>
@@ -43,8 +60,62 @@
     <div class="se-pre-con"></div>
     <jsp:directive.include file="header.jsp" />
     <div id="page-wrapper2" class="gray-bg">
+        <div class="rowx wrapper border-bottom white-bg page-heading">
+            <div class="col-sm-12">
+
+                <div class="graphs">
+                    <div class="graph-in">
+                        <div class="graph-img">
+                            <canvas id="doughnutChart" height="100"></canvas>
+                        </div>
+                        <div class="graph-txt">Ign Off</div>
+                    </div>
+                    <div class="graph-in">
+                        <div class="graph-img">
+                            <canvas id="doughnutChart2" height="100"></canvas>
+                        </div>
+                        <div class="graph-txt">Ign On</div>
+                    </div>
+                    <div class="graph-in">
+                        <div class="graph-img">
+                            <canvas id="doughnutChart3" height="100"></canvas>
+                        </div>
+                        <div class="graph-txt">Moving</div>
+                    </div>
+                    
+                    <div class="graph-in">
+                        <div class="graph-img">
+                            <canvas id="doughnutChart5" height="100"></canvas>
+                        </div>
+                        <div class="graph-txt">Idle</div>
+                    </div>
+                    <div class="graph-in">
+                        <div class="graph-img">
+                            <canvas id="doughnutChart4" height="100"></canvas>
+                        </div>
+                        <div class="graph-txt">Alert</div>
+                    </div>
+
+                    
+
+                    <div class="graph-in" >
+
+                       
+                        <div class="graph-img" >
+                           <canvas id="doughnutChart6" height="100"></canvas>
+                        </div>
+
+                        <div class="graph-txt">
+                            Total Unit Count
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
         <div class="row">
-            <div class="col-lg-12">
                 <div class="wrapper wrapper-content fadeInUp pad-bot-0">
                     <div class="row">
                         <div class="col-lg-12">
@@ -60,140 +131,34 @@
                                                         <tr class="leftMenu">
 
                                                             <th width="16%" align="center" valign="middle">Vehicle No</th>
-                                                           <th width="15%" align="center" valign="middle">Date/Time</th>
+                                                             <th width="10%" align="center" valign="middle">Date/Time</th>
                                                             
-                                                            <th width="14%" align="center" valign="middle">Status</th>
-                                                            <th width="42%" align="center" valign="middle">Location</th>
-                                                            
-                                                             <th width="4%" align="center" valign="middle">Speed</th>
-                                                            <th width="4%" align="center" valign="middle">Dist</th>                     
-                                                            <th width="14%" align="center" valign="middle">AC</th>
-                                                         
-                                                            <th width="4%" align="center" title="(dd:hh:mm)" valign="middle">Idle Time</th>
+                                                            <th width="12%" align="center" valign="middle">Status</th>
+                                                                <th width="42%" align="center" valign="middle">Location</th>
+                                                        
+                                                            <th width="4%" align="center" valign="middle">Speed</th>
+                                                           <th width="4%" align="center" valign="middle">Dist</th>                     
+                                                            <th width="6%" align="center" valign="middle">AC</th>
+                                                           
+                                                            <th width="12%" align="center" title="(dd:hh:mm)" valign="middle">Idle Time</th>
 
                                                         </tr>
                                                     </thead>
 
                                                 </table>
                                                 <input type="hidden" id="tempVehicleNo">
-                                                <!--Rohan code end 1 -->
+                                              	<!--Rohan code end 1 -->
+                                            </div>
+                                            <div class="padding-bottom-50">
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="same-height2" class="resizable2 resizable col-md-6 md-pad-right">
-                                        <div class="ibox-title">
-                                            <div class="map-btns">
-                                                <ul class="subnav-right az-move-right">
-                                                    <li class="map-actions"><a href="#myPopup" id="vehicleSearchFilterId" data-rel="popup" class="">&nbsp;</a>
-
-
-                                                        <div data-role="popup" id="myPopup" title="Vehicle Search" class="ui-content" style="min-width:250px; position:relative">
-                                                            <form:form class="form-inline" action="#" commandName="VehicleSearchForm">
-                                                                <div>
-                                                                   <!-- <h3>Vehicle Search</h3>  -->
-                                                                    <div>
-                                                                    <label class="ui-accessible"><h4>Location:</h4></label>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                    <form:input autocomplete="off" type="text" id="geocomplete" path="area" 
-                                                                    class="form-control" size="30"></form:input>
-                                                                    </div>
-                                                                    <br/>
-                                                                    <div class="form-group">
-                                                                    <label for="distanceId" class="ui-accessible"><h4>Distance(KM):</h4></label>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                    <form:input autocomplete="off" type="text" id="distanceId" path="distance" 
-                                                                    class="form-control" placeholder="Distance" maxlength="5" size="30"></form:input>
-                                                                    </div>
-                                                                    <form:hidden path="lat"/>
-                                                                    <form:hidden path="lng"/>
-                                                                    <input type="hidden" id="isSearchedId" value="false">
-                                                                </div>
-                                                            </form:form>
-                                                        </div>
-                                                    </li>
-                                                    &nbsp;&nbsp;
-                                                    <!--  <li class="map-vehicles"><a href="#" class="">&nbsp;</a> </li>-->
-                                                    <!-- <li class="map-landmarks"><a href="#">&nbsp;</a></li>-->
-                                                    <li class="map-layout-toggle1">
-                                                        <a class="map-layout-togglea1 active" href="javascript:void(0)" onclick="reSize('side')"></a>
-                                                    </li>
-                                                    <li class="map-layout-toggle2">
-                                                        <a href="javascript:void(0)" class="map-layout-togglea2" onclick="reSize('wide')"></a>
-                                                    </li>
-                                                    <!-- <li class="map-icon-medium"><a class="active" href="#">&nbsp;</a></li>-->
-                                                    <!-- <li class="map-icon-large"><a href="#" class="">&nbsp;</a></li>-->
-                                                    <!-- <li class="map-fullscreen"><a href="#">&nbsp;</a></li>-->
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div id="maptoggle" class="ibox-content">
-                                            <div id="map" style="width:100%;height:480px"></div>
-                                            <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCeQdAwrHm8Zap7jwX_gNRA3dhH-CxdCWQ&ext=.js"></script>
-
-                                            <!--Rohan code start 3 -->
-                                            <script>
-                                                /*   function initMap() {
-                                                        var uluru = {lat: 18.5679, lng: 73.9143};
-                                                        var map = new google.maps.Map(document.getElementById('map'), {
-                                                          zoom: 9,
-                                                          center: uluru,
-                                                          mapTypeId:google.maps.MapTypeId.ROADMAP
-                                                            
-                                                        });
-                                                        var marker = new google.maps.Marker({
-                                                          position: uluru,
-                                                          map: map
-                                                        });form-inline
-                                                      } */
-
-                                                var MY_MAPTYPE_ID = 'custom_style';
-
-                                                function initialize() {
-
-                                                    var point = new google.maps.LatLng(16.8524,
-                                                        74.5815);
-                                                    var map_canvas = document.getElementById('map');
-                                                    var map_options = {
-                                                        center: new google.maps.LatLng(16.8524, 74.5815),
-                                                        zoom: 10,
-                                                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                                                    };
-                                                    map = new google.maps.Map(map_canvas, map_options)
-
-                                                    /*     new google.maps.Marker({
-                                                          position: point,
-                                                          map: map
-                                                       }); */
-                                                }
-
-                                                initialize();
-                                                //google.maps.event.addDomListener(window, 'load', initialize);
-                                                
-                                                 window.addEventListener('load',function(){
-                                                      if(document.getElementById('map')){
-                                                        //initialize();
-                                                        //   drawTable(null);
-                                                          table.ajax.reload();
-                                                      }
-                                                     if($('.pac-container')){
-                                                         $('.pac-container.pac-logo').css({'z-index':'10000'});
-                                                     }
-                                                     $('a').prop('rel', 'external');
-                                                     $("#vehicleSearchFilterId").removeProp('rel');
-                                                     $(".se-pre-con").fadeOut("slow");
-                                                  });
-                                            </script>
-                                            <!--Rohan code end 3 -->
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
     <jsp:directive.include file="footer.jsp" />
@@ -211,7 +176,6 @@
 
     <script type="text/javascript" src="html/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" src="html/js/buttons.flash.min.js"></script>
-    <script type="text/javascript" src="html/js/markerwithlabel.js"></script>
 
     <script type="text/javascript" src="html/js/jspdf.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
@@ -235,46 +199,6 @@
         var refreshOut;
 
         $(document).ready(function() {
-            
-            $("#myPopup").dialog({
-                autoOpen: false,
-                width: 250,
-                position: [0,28],
-                buttons: [
-                    {
-                        text: "Search",
-                        click: function() {
-                            if(($("#geocomplete").val()!="")&&($("#distanceId").val()!="")&&($("#lat").val()!="")&&($("#lng").val()!="")){
-                               $("#vehicleSearchFilterId").addClass("active");
-                               $("#isSearchedId").val("true");
-                            }    
-                                table.ajax.reload();
-                            $( this ).dialog( "close" );
-                        }
-                    },
-                    {
-                        text: "Reset",
-                        click: function() {
-                            $("#geocomplete").val("");
-                            $("#distanceId").val("");
-                            $("#lat").val("");
-                            $("#lng").val("");
-                            $("#vehicleSearchFilterId").removeClass("active");
-                            $("#isSearchedId").val("false");
-                        }
-                    }
-                ]
-            }).dialog('widget').position({ my: 'left', at: 'right', of: $(this) });
-
-            $("#vehicleSearchFilterId").click(function(){
-                 $( function() {
-                    $( "#myPopup" ).dialog("open");
-                  } );
-            });
-            
-            $('a').prop('rel', 'external');
-            $("#vehicleSearchFilterId").removeProp('rel');
-            $('#hdr_live').addClass("dropdown active");
 
             // <!--Rohan code start 2 -->	
 
@@ -294,7 +218,7 @@
             try {
                 allVehicleLocationJSON = ${allVehicleLocation};
                 drawTable(allVehicleLocationJSON);
-
+                $(".se-pre-con").fadeOut("slow");
                 /*$('input[type=radio][name=Vehicleno]').each(function () {
                     var $this = $(this);
                     if ($(this).prop('checked')) {
@@ -309,25 +233,7 @@
                 });*/
 
 
-                $('#entrydata').on("change", 'input[type=radio][name=Vehicleno]', function() { //we have to register new event handler for dynamically loaded contents after AJAX
-                    if ($(this).prop('checked')) {
-                        var id = $(this).attr('id');
-                        $('#tempVehicleNo').val(id); //set to display same vehicle locaion whenever reload
-                        $.each(allVehicleAjaxArr, function(key, value) {
-                            if (value.vehicleno == id) {
-                                var map_canvas = document.getElementById('map');
-                                var map_options = {
-                                    center: new google.maps.LatLng(value.latitude, value.longitude),
-                                    zoom: 50,
-                                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                                }
-                                map = new google.maps.Map(map_canvas, map_options)
-                                setMarkers(map, new google.maps.LatLng(value.latitude,
-                                    value.longitude), id, value.location, value.datetime1, value.description,value.ownername,value.nextservice,value.deviceno,value.imeino);
-                            }
-                        });
-                    }
-                });
+                
                 /*  $('input[type=radio][name=Vehicleno]').change(function() {
                 {data: "location"},
                                  {data: "location"},
@@ -394,15 +300,15 @@
                                 data: "vehicleno",
                                 "render": function(data, type, full, meta) {
                                  
-                                	updateMarker(allVehicleAjaxArr, data);
+                                	//updateMarker(allVehicleAjaxArr, data);
                                 	
-                                    return '<div ><img  style="width:15px;height:15px;" onClick="showVehicleDetails(\''+full.vehicleno+'\',\''+full.ownername+'\',\''+full.deviceno+'\',\''+full.nextservice+'\',\''+full.imeino+'\',\''+full.drivername+'\',\''+full.driverphone+'\',\''+full.gsmnumber+'\',\''+full.odometer+'\',\''+full.ownerphone+'\',\''+full.vehicletype+'\')" src="html/images/plus.png">&nbsp; &nbsp<a target="_blank" style="color:black" href="Vehicle_DetailedLogs?id=' + data + '" rel="external">  <b>' + data + '</b></a></div>';
+                                    return '<div ><img  style="width:15px;height:15px;" onClick="showVehicleDetails(\''+full.vehicleno+'\',\''+full.ownername+'\',\''+full.deviceno+'\',\''+full.nextservice+'\',\''+full.imeino+'\',\''+full.drivername+'\',\''+full.driverphone+'\',\''+full.gsmnumber+'\',\''+full.odometer+'\',\''+full.ownerphone+'\',\''+full.vehicletype+'\')" src="html/images/plus.png">&nbsp; &nbsp<a style="color:black" target="_blank" href="Vehicle_DetailedLogs?id=' + data + '" rel="external">  <b>' + data + '</b></a></div>';
                                 }
-                            }, {
-                                data: "datetime1"
                             }
                             ,
-                            
+                            {
+                                data: "datetime1"
+                            },
                             {
                                 data: "description",
                                 "render": function(data, type, full, meta) {
@@ -416,32 +322,34 @@
                                      } 
                                     return '<div style="background-color:'+bgColor+'"><span  style="color:#fff;">' + data + '<span></div>';
                                 }
-                            },{
-                                data: "location"
                             },
-                           
+                            {
+                                data: "location"
+                            }
+                            ,
+                        
                             {
                                 data: "speed"
                             },
-                            
-                           {
+                           
+                            {
                                 data: "distance"
                             }
-                            , {
+                            ,    {
                                 data: "acstatus"
                                     ,
                                    "render": function(data, type, full, meta) {
                                        
                                    //	updateMarker(allVehicleAjaxArr, data);
-                                   	var bgColor = '#1e8427';
+                                   	var bgColor = '#ffffff';
                                        
-                                   	 if (data == 'AC OFF') {
+                                   /*	if (data == 'AC OFF') {
                                             bgColor = '#d60002';
-                                         	}
+                                       }	*/
                                    	 if (data == null){
-                                   	 	return '<div style="background-color:#ffffff"><span  style="color:#fff;"><span></div>';
+                                   	 	return '<span  style="color:#000;"><span>';
                                    	 }
-                                       return '<div style="background-color:#ffffff"><span  style="color:#fff;">' + data + '<span></div>';
+                                       return '<span  style="color:#000;">' + data + '<span>';
                                    } 
                                }, 
                             {
@@ -462,8 +370,8 @@
                         ],
                         buttons: [{
                                 extend: 'colvis',
-                                titleAttr:'Select Columns',
                                 text: '',
+                                titleAttr:'Select Columns',
                                 columns: ':gt(1)'
                             },
 
@@ -476,11 +384,11 @@
                                 titleAttr:'Export To PDF',
                                 text: ''
                             }, {
-                            	text: ' <span style="font-size: 13px" ><b>Close Map</b><span> ',
-                            	titleAttr:'Go to home page',
+                            	text: '<span style="font-size: 13px" ><b>Show Map</b></span>',
+                            	className: 'linkButton',
+                            	titleAttr:'Switch To Map View',
                                 action: function ( e, dt, node, config ) {
-                                	window.location.href = "home";
-
+                                	window.location.href = "getLiveMap";
                                 }
                             }
 
@@ -504,31 +412,7 @@
                     }).join(':');
                 }
 
-                function updateMarker(jsonArrMarker, vehicleId) {
-
-                    var map_canvas = document.getElementById('map');
-                    var map_options = {
-                        center: new google.maps.LatLng(jsonArrMarker[0].latitude, jsonArrMarker[0].longitude),
-                        zoom: 10,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
-                    map = new google.maps.Map(map_canvas, map_options);
-                    var bounds = new google.maps.LatLngBounds();
-                    $.each(jsonArrMarker, function(key, value) {
-
-
-                        setMarkers(map, new google.maps.LatLng(value.latitude,
-                            value.longitude), value.vehicleno, value.location, value.datetime1, value.description,value.ownername,value.nextservice,value.deviceno,value.imeino);
-
-                        bounds.extend(new google.maps.LatLng(value.latitude,
-                            value.longitude));
-
-
-
-                    });
-
-                    map.fitBounds(bounds);
-                }
+               
 
 
 
@@ -547,54 +431,7 @@
                 });
             } catch (err) {}
         });
-
-
-
-        function setMarkers(map, position, vehicleNo, location, datetime, description, ownerName, nextService, deviceNo, imeiNo) {
-
-            var hoverDiv = '<div style="display:none" class="markerTooltip" id="markerhover' + vehicleNo + '"><p>' + vehicleNo + '</p><p>' + location + '</p><p>' + datetime + '</p></div>';
-            // The final coordinate closes the poly by connecting to the first coordinate.
-            var image = {
-                url: 'html/images/vehiclemap.png',
-                // This marker is 20 pixels wide by 32 pixels high.
-                size: new google.maps.Size(50, 50),
-                // The origin for this image is (0, 0).
-                origin: new google.maps.Point(0, 0),
-                // The anchor for this image is the base of the flagpole at (0, 32).
-                anchor: new google.maps.Point(0, 32)
-            };
-            var bgColor = '#1e8427';
-            if ( description == 'Poll R' || description == 'Ignition Off' || description == 'Health Check') {
-                bgColor = '#d60002'
-            }
-            var marker = new MarkerWithLabel({
-                position: position,
-                map: map,
-                icon: image,
-                labelStyle: {
-                    'background-color': bgColor,
-                    opacity: 0.75
-                },
-                draggable: false,
-                raiseOnDrag: true,
-                labelContent: '<div>' + vehicleNo + '' + hoverDiv + '</div>',
-                labelClass: "labels"
-            });
-            
-             var infowindow = new google.maps.InfoWindow({
-                 content: "<div  style=\"word-wrap: break-word;width:180px\"><span>Location : "+location+"</span></br>"+
-                               
-                            "</div>",
-                  pixelOffset: new google.maps.Size(25,30)
-             });
-            
-             marker.addListener('click', function() {
-                 infowindow.open(map, marker);
-             });
-            
-        }
-
-
+        
         function show(id) {
             document.getElementById(id).style.display = "block";
             document.getElementById(id).style.zIndex = -3;
@@ -1073,58 +910,14 @@
     }
     
     #same-height {
-        margin: 0;
-        padding: 0;
-        height: 100%;
+        height: 100% !important;
         background-color: white;
         position: absolute;
-        width: 60%;
+        width: 100%;
         float: left;
     }
 
 </style>
-<script>
-    function reSize(side) {
-        var oldside = map.getBounds().getNorthEast().lng()
-        if (side == "wide") {
-            $(".vsplitbar").hide();
-            document.getElementById("same-height2").style.width = "100%"
-            document.getElementById("same-height2").style.height = "50%"
-            //gridtoggle
-            var sidetable = document.getElementById('same-height');
-
-            sidetable.style.width = '100%';
-            sidetable.style.top = '58%';
-            sidetable.style.marginTop = null;
-            $('#same-height').css({
-                marginTop: '520px'
-            });
-            $(".map-layout-togglea1").removeClass("active");
-            $(".map-layout-togglea2").addClass("active");
-        } else {
-            $(".vsplitbar").show();
-            document.getElementById("same-height2").style.width = "40%"
-            document.getElementById("same-height2").style.height = "100%"
-            var sidetable = document.getElementById('same-height');
-            sidetable.style.width = null;
-            sidetable.style.top = null;
-            sidetable.style.width = '60%';
-            sidetable.style.marginTop = null;
-            $(".map-layout-togglea2").removeClass("active");
-            $(".map-layout-togglea1").addClass("active");
-
-
-
-
-            side = "wide";
-        }
-        google.maps.event.trigger(map, 'resize');
-        var newside = map.getBounds().getNorthEast().lng()
-        var topan = oldside - newside;
-        map.setCenter(new google.maps.LatLng(map.getCenter().lat(), map.getCenter().lng() + topan));
-    }
-
-</script>
 <script>
     var refreshOut = setInterval(function() {
         //table.ajax.reload(null,false);
@@ -1259,270 +1052,6 @@ select.input-sm {
 
 </style>
 
-<script>
-    /*
-     * jQuery.splitter.js - two-pane splitter window plugin
-     *
-     * version 1.51 (2009/01/09) 
-     * 
-     * Dual licensed under the MIT and GPL licenses: 
-     *   http://www.opensource.org/licenses/mit-license.php 
-     *   http://www.gnu.org/licenses/gpl.html 
-     */
-
-    /**
-     * The splitter() plugin implements a two-pane resizable splitter window.
-     * The selected elements in the jQuery object are converted to a splitter;
-     * each selected element should have two child elements, used for the panes
-     * of the splitter. The plugin adds a third child element for the splitbar.
-     * 
-     * For more details see: http://methvin.com/splitter/
-     *
-     *
-     * @example $('#MySplitter').splitter();
-     * @desc Create a vertical splitter with default settings 
-     *
-     * @example $('#MySplitter').splitter({type: 'h', accessKey: 'M'});
-     * @desc Create a horizontal splitter resizable via Alt+Shift+M
-     *
-     * @name splitter
-     * @type jQuery
-     * @param Object options Options for the splitter (not required)
-     * @cat Plugins/Splitter
-     * @return jQuery
-     * @author Dave Methvin (dave.methvin@gmail.com)
-     */
-    ;
-    (function($) {
-
-        $.fn.splitter = function(args) {
-            args = args || {};
-            return this.each(function() {
-                var zombie; // left-behind splitbar for outline resizes
-                function startSplitMouse(evt) {
-                    if (opts.outline)
-                        zombie = zombie || bar.clone(false).insertAfter(A);
-                    panes.css("-webkit-user-select", "none"); // Safari selects A/B text on a move
-                    bar.addClass(opts.activeClass);
-                    A._posSplit = A[0][opts.pxSplit] - evt[opts.eventPos];
-                    $(document)
-                        .bind("mousemove", doSplitMouse)
-                        .bind("mouseup", endSplitMouse);
-                }
-
-                function doSplitMouse(evt) {
-                    var newPos = A._posSplit + evt[opts.eventPos];
-                    if (opts.outline) {
-                        newPos = Math.max(0, Math.min(newPos, splitter._DA - bar._DA));
-                        bar.css(opts.origin, newPos);
-                    } else
-                        resplit(newPos);
-                }
-
-                function endSplitMouse(evt) {
-                    bar.removeClass(opts.activeClass);
-                    var newPos = A._posSplit + evt[opts.eventPos];
-                    if (opts.outline) {
-                        zombie.remove();
-                        zombie = null;
-                        resplit(newPos);
-                    }
-                    panes.css("-webkit-user-select", "text"); // let Safari select text again
-                    $(document)
-                        .unbind("mousemove", doSplitMouse)
-                        .unbind("mouseup", endSplitMouse);
-                }
-
-                function resplit(newPos) {
-                    // Constrain new splitbar position to fit pane size limits
-                    newPos = Math.max(A._min, splitter._DA - B._max,
-                        Math.min(newPos, A._max, splitter._DA - bar._DA - B._min));
-                    // Resize/position the two panes
-                    bar._DA = bar[0][opts.pxSplit]; // bar size may change during dock
-                    bar.css(opts.origin, newPos).css(opts.fixed, splitter._DF);
-                    A.css(opts.origin, 0).css(opts.split, newPos).css(opts.fixed, splitter._DF);
-                    B.css(opts.origin, newPos + bar._DA)
-                        .css(opts.split, splitter._DA - bar._DA - newPos).css(opts.fixed, splitter._DF);
-                    // IE fires resize for us; all others pay cash
-
-                }
-
-                function dimSum(jq, dims) {
-                    // Opera returns -1 for missing min/max width, turn into 0
-                    var sum = 0;
-                    for (var i = 1; i < arguments.length; i++)
-                        sum += Math.max(parseInt(jq.css(arguments[i])) || 0, 0);
-                    return sum;
-                }
-
-                // Determine settings based on incoming opts, element classes, and defaults
-                var vh = (args.splitHorizontal ? 'h' : args.splitVertical ? 'v' : args.type) || 'v';
-                var opts = $.extend({
-                    activeClass: 'active', // class name for active splitter
-                    pxPerKey: 8, // splitter px moved per keypress
-                    tabIndex: 0, // tab order indicator
-                    accessKey: '' // accessKey for splitbar
-                }, {
-                    v: { // Vertical splitters:
-                        keyLeft: 39,
-                        keyRight: 37,
-                        cursor: "e-resize",
-                        splitbarClass: "vsplitbar",
-                        outlineClass: "voutline",
-                        type: 'v',
-                        eventPos: "pageX",
-                        origin: "left",
-                        split: "width",
-                        pxSplit: "offsetWidth",
-                        side1: "Left",
-                        side2: "Right",
-                        fixed: "height",
-                        pxFixed: "offsetHeight",
-                        side3: "Top",
-                        side4: "Bottom"
-                    },
-                    h: { // Horizontal splitters:
-                        keyTop: 40,
-                        keyBottom: 38,
-                        cursor: "n-resize",
-                        splitbarClass: "hsplitbar",
-                        outlineClass: "houtline",
-                        type: 'h',
-                        eventPos: "pageY",
-                        origin: "top",
-                        split: "height",
-                        pxSplit: "offsetHeight",
-                        side1: "Top",
-                        side2: "Bottom",
-                        fixed: "width",
-                        pxFixed: "offsetWidth",
-                        side3: "Left",
-                        side4: "Right"
-                    }
-                }[vh], args);
-
-                // Create jQuery object closures for splitter and both panes
-                var splitter = $(this).css({
-                    position: "relative"
-                });
-                var panes = $(">*", splitter[0]).css({
-                    position: "absolute", // positioned inside splitter container
-                    "z-index": "1", // splitbar is positioned above
-                    "-moz-outline-style": "none" // don't show dotted outline
-                });
-                var A = $(panes[0]); // left  or top
-                var B = $(panes[1]); // right or bottom
-
-                // Focuser element, provides keyboard support; title is shown by Opera accessKeys
-                var focuser = $('<a href="javascript:void(0)"></a>')
-                    .attr({
-                        accessKey: opts.accessKey,
-                        tabIndex: opts.tabIndex,
-                        title: opts.splitbarClass
-                    })
-                    .bind("keydown", function(e) {
-                        var key = e.which || e.keyCode;
-                        var dir = key == opts["key" + opts.side1] ? 1 : key == opts["key" + opts.side2] ? -1 : 0;
-                        if (dir)
-                            resplit(A[0][opts.pxSplit] + dir * opts.pxPerKey, false);
-                    })
-                    .bind("blur", function() {
-                        bar.removeClass(opts.activeClass)
-                    });
-
-                // Splitbar element, can be already in the doc or we create one
-                var bar = $(panes[2] || '<div></div>')
-                    .insertAfter(A).css("z-index", "100").append(focuser)
-                    .attr({
-                        "class": opts.splitbarClass,
-                        unselectable: "on"
-                    })
-                    .css({
-                        position: "absolute",
-                        "user-select": "none",
-                        "-webkit-user-select": "none",
-                        "-khtml-user-select": "none",
-                        "-moz-user-select": "none"
-                    })
-                    .bind("mousedown", startSplitMouse);
-                // Use our cursor unless the style specifies a non-default cursor
-                if (/^(auto|default|)$/.test(bar.css("cursor")))
-                    bar.css("cursor", opts.cursor);
-
-                // Cache several dimensions for speed, rather than re-querying constantly
-                bar._DA = bar[0][opts.pxSplit];
-                splitter._PBF = $.boxModel ? dimSum(splitter, "border" + opts.side3 + "Width", "border" + opts.side4 + "Width") : 0;
-                splitter._PBA = $.boxModel ? dimSum(splitter, "border" + opts.side1 + "Width", "border" + opts.side2 + "Width") : 0;
-                A._pane = opts.side1;
-                B._pane = opts.side2;
-                $.each([A, B], function() {
-                    this._min = opts["min" + this._pane] || dimSum(this, "min-" + opts.split);
-                    this._max = opts["max" + this._pane] || dimSum(this, "max-" + opts.split) || 9999;
-                    this._init = opts["size" + this._pane] === true ?
-                        parseInt($.curCSS(this[0], opts.split)) : opts["size" + this._pane];
-                });
-
-                // Determine initial position, get from cookie if specified
-                var initPos = A._init;
-                if (!isNaN(B._init)) // recalc initial B size as an offset from the top or left side
-                    initPos = splitter[0][opts.pxSplit] - splitter._PBA - B._init - bar._DA;
-                if (opts.cookie) {
-                    if (!$.cookie)
-                        alert('jQuery.splitter(): jQuery cookie plugin required');
-                    var ckpos = parseInt($.cookie(opts.cookie));
-                    if (!isNaN(ckpos))
-                        initPos = ckpos;
-                    $(window).bind("unload", function() {
-                        var state = String(bar.css(opts.origin)); // current location of splitbar
-                        $.cookie(opts.cookie, state, {
-                            expires: opts.cookieExpires || 365,
-                            path: opts.cookiePath || document.location.pathname
-                        });
-                    });
-                }
-                if (isNaN(initPos)) // King Solomon's algorithm
-                    initPos = Math.round((splitter[0][opts.pxSplit] - splitter._PBA - bar._DA) / 2);
-
-                // Resize event propagation and splitter sizing
-                if (opts.anchorToWindow) {
-                    // Account for margin or border on the splitter container and enforce min height
-                    splitter._hadjust = dimSum(splitter, "borderTopWidth", "borderBottomWidth", "marginBottom");
-                    splitter._hmin = Math.max(dimSum(splitter, "minHeight"), 20);
-                    $(window).bind("resize", function() {
-                        var top = splitter.offset().top;
-                        var wh = $(window).height();
-                        splitter.css("height", Math.max(wh - top - splitter._hadjust, splitter._hmin) + "px");
-
-                    }).trigger("resize");
-                } else if (opts.resizeToWidth)
-                    $(window).bind("resize", function() {
-                        splitter.trigger("resize");
-                    });
-
-                // Resize event handler; triggered immediately to set initial position
-                splitter.bind("resize", function(e, size) {
-                    // Custom events bubble in jQuery 1.3; don't Yo Dawg
-                    if (e.target != this) return;
-                    // Determine new width/height of splitter container
-                    splitter._DF = splitter[0][opts.pxFixed] - splitter._PBF;
-                    splitter._DA = splitter[0][opts.pxSplit] - splitter._PBA;
-                    // Bail if splitter isn't visible or content isn't there yet
-                    if (splitter._DF <= 0 || splitter._DA <= 0) return;
-                    // Re-divvy the adjustable dimension; maintain size of the preferred pane
-                    resplit(!isNaN(size) ? size : (!(opts.sizeRight || opts.sizeBottom) ? A[0][opts.pxSplit] :
-                        splitter._DA - B[0][opts.pxSplit] - bar._DA));
-                }).trigger("resize", [initPos]);
-            });
-        };
-
-    })(jQuery);
-
-
-    $().ready(function() {
-        $(".wrap").splitter();
-    });
-
-</script>
 
 <script>
    $(function(){

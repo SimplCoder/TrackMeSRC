@@ -29,12 +29,23 @@
       <div id="page-wrapper2" class="gray-bg">
             <div class="rowx wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-12">
-                    <h2>User Entry </h2>
+                	<c:if test="${UserMaster.editFlag==true }">
+                    <h2>User Modification </h2></c:if>
+                    
+                    <c:if test="${UserMaster.editFlag==false }">
+                    <h2>User Entry </h2></c:if>
                 </div>
             </div>
             <div class="wrapper wrapper-content  animated fadeInRight">
                 <div class="ibox-content">
+                 	<c:if test="${UserMaster.editFlag==true }">
+                    <h3 class="m-t-none m-b">Existing User</h3>
+                    </c:if>
+                    
+                    <c:if test="${UserMaster.editFlag==false }">
                     <h3 class="m-t-none m-b">Add New User</h3>
+                    </c:if>
+                    
                     <div class="row">
                         <form:form role="form" action="UserMasterSave" commandName="UserMaster" method="post"  onsubmit="return myFunction()">
                                 <div class="form-group col-sm-6">
