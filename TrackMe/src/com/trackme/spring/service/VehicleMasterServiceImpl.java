@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.trackme.constants.Constant;
 import com.trackme.spring.dao.VehicleMasterDAO;
 import com.trackme.spring.model.GPSTracking;
+import com.trackme.spring.model.User;
+import com.trackme.spring.model.UserMaster;
 import com.trackme.spring.model.VehicleMaster;
 
 @Service("vehicleMasterService")
@@ -56,9 +58,9 @@ public class VehicleMasterServiceImpl implements VehicleMasterService {
 
 	@Override
 	@Transactional
-	public int totaNoOffVehicle() {
+	public int totaNoOffVehicle(UserMaster currentUser) {
 		// TODO Auto-generated method stub
-		return this.vehicleMasterDAO.totaNoOffVehicle();
+		return this.vehicleMasterDAO.totaNoOffVehicle(currentUser);
 	}
 
 	@Override

@@ -1,10 +1,12 @@
 package com.trackme.spring;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,7 @@ import com.trackme.spring.jsonview.Views;
 import com.trackme.spring.model.AjaxResponseBody;
 import com.trackme.spring.model.SearchCriteria;
 import com.trackme.spring.model.StatusCount;
+import com.trackme.spring.model.UserMaster;
 import com.trackme.spring.model.VehicleSearchForm;
 import com.trackme.spring.service.GsmMasterService;
 import com.trackme.spring.service.MapLatlngService;
@@ -53,19 +56,31 @@ public class AjaxController {
 	// @JsonView(Views.Public.class) - Optional, limited the json data display to client.
 	@JsonView(Views.Public.class)
 	@RequestMapping(value = "/searchStatusCounts")
-	public AjaxResponseBody getSearchResultViaAjax(@RequestBody SearchCriteria search) {
+	public AjaxResponseBody getSearchResultViaAjax(HttpServletRequest request,@RequestBody SearchCriteria search) {
+		Principal principal =request.getUserPrincipal();
+		UserMaster currentUser=null;
+		if (principal != null) {
+			String userName = principal.getName();
+			HttpSession session = request.getSession();
+			currentUser = (UserMaster) session.getAttribute(Constant.CURRENT_USER);
+			if (currentUser == null) {
+				currentUser = userMasterService.getUserMasterById(userName);
+				session.setAttribute(Constant.CURRENT_USER, currentUser);
+			}
+		}
+		
 		List<StatusCount> statusCounts= new ArrayList<>();
 
 		AjaxResponseBody result = new AjaxResponseBody();
 
 		StatusCount statusCount = new StatusCount();
 		
-		statusCount.setTotalVehicle(Integer.toString(vehicleMasterService.totaNoOffVehicle()));
-		statusCount.setIgnitionOn(Integer.toString(gsmMasterService.ignitionOnVehicleCount()));
-		statusCount.setIgnitionOff(Integer.toString(gsmMasterService.ignitionOffVehicleCount()));
-		statusCount.setMoving(Integer.toString(gsmMasterService.movingVehicleCount()));
-		statusCount.setIdle(Integer.toString(gsmMasterService.idleVehicleCount()));
-		statusCount.setAlert(Integer.toString(gsmMasterService.alertOnVehicleCount()));
+		statusCount.setTotalVehicle(Integer.toString(vehicleMasterService.totaNoOffVehicle(currentUser)));
+		statusCount.setIgnitionOn(Integer.toString(gsmMasterService.ignitionOnVehicleCount(currentUser)));
+		statusCount.setIgnitionOff(Integer.toString(gsmMasterService.ignitionOffVehicleCount(currentUser)));
+		statusCount.setMoving(Integer.toString(gsmMasterService.movingVehicleCount(currentUser)));
+		statusCount.setIdle(Integer.toString(gsmMasterService.idleVehicleCount(currentUser)));
+		statusCount.setAlert(Integer.toString(gsmMasterService.alertOnVehicleCount(currentUser)));
 		//statusCount.setNotResponding(Integer.toString(gsmMasterService.getNotRespondingVehicleCount()));
 		//List<StatusCount> statusCounts =statusCounts;
 		statusCounts.add(statusCount);

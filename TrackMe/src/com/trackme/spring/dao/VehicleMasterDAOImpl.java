@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import com.trackme.constants.Constant;
 import com.trackme.spring.model.FuelDetail;
 import com.trackme.spring.model.GPSTracking;
+import com.trackme.spring.model.UserMaster;
 import com.trackme.spring.model.VehicleMaster;
 
 
@@ -82,14 +83,16 @@ public class VehicleMasterDAOImpl implements VehicleMasterDAO {
 	}
 
 	@Override
-	public int totaNoOffVehicle() {
+	public int totaNoOffVehicle(UserMaster userMaster) {
 		
 		
 		int total=0;
 		try{
 		StringBuilder queryStr=new StringBuilder();
 		queryStr.append("select count(distinct vm.vehicleno) from gsmstatus gsm join vehiclemaster vm on ( gsm.unitno= vm.unitno and LOWER(vm.status)=LOWER('ACTIVE'))");
-		
+		 if(!userMaster.getRoleMaster().getRole().equalsIgnoreCase(Constant.ROLE_SUPERUSER)){
+			 queryStr.append(" and vm.company = " +userMaster.getCompanyMaster().getId() );
+			}
 		total = jdbcTemplate.queryForInt(queryStr.toString());
 		return total;}catch(Exception e){
 			return total;

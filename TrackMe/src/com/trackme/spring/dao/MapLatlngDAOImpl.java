@@ -77,6 +77,8 @@ public class MapLatlngDAOImpl implements MapLatlngDAO {
 				strBuf.append(" select dropschedulename as result from student  where (mothermobileno = '"+userMaster.getUserName().trim()+"' or fathermobileno = '"+userMaster.getUserName().trim()+"' or gaurdianmobileno = '"+userMaster.getUserName().trim()+"') "); 
 				strBuf.append(" ) as resultAll) ");
 				strBuf.append(" ) ");
+			}else if(!userMaster.getRoleMaster().getRole().equalsIgnoreCase(Constant.ROLE_SUPERUSER)){
+				strBuf.append(" and vm.company = " +userMaster.getCompanyMaster().getId() );
 			}
 		}
 		strBuf.append(" order by gsm.datetimedate+gsm.datetime desc  ");

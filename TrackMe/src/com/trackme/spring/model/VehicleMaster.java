@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -154,6 +156,12 @@ private String serviceDateShow;
 
 @Column(name="modifiedDate")
   private Date modifiedDate;
+
+
+@OneToOne
+@JoinColumn(name="company")
+CompanyMaster companyMaster;
+
   
   public String getVehicleNo()
   {
@@ -730,6 +738,15 @@ public String getStatus() {
 public void setStatus(String status) {
 	this.status = status;
 }
+
+public CompanyMaster getCompanyMaster() {
+	return companyMaster;
+}
+
+public void setCompanyMaster(CompanyMaster companyMaster) {
+	this.companyMaster = companyMaster;
+}
+
 
 
 }

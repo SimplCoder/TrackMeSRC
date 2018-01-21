@@ -1,13 +1,14 @@
 package com.trackme.spring.service;
 
+import com.trackme.spring.model.UserMaster;
 
 public interface GsmMasterService {
 
-	public int ignitionOnVehicleCount();
-	public int ignitionOffVehicleCount();
-	public int movingVehicleCount();
-	public int idleVehicleCount();
-	public int overSpeedVehicleCount();
-	public int alertOnVehicleCount();
-	public int getNotRespondingVehicleCount();
+	public int ignitionOnVehicleCount(UserMaster currentUser);
+	public int ignitionOffVehicleCount(UserMaster currentUser);
+	public int movingVehicleCount(UserMaster currentUser);
+	public int idleVehicleCount(UserMaster currentUser);
+	public int overSpeedVehicleCount(UserMaster currentUser);
+	public int alertOnVehicleCount(UserMaster currentUser);
+	public int getNotRespondingVehicleCount(UserMaster currentUser);
 }

@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trackme.constants.Constant;
+import com.trackme.spring.model.CompanyMaster;
 import com.trackme.spring.model.UserMaster;
 import com.trackme.spring.model.VehicleMaster;
+import com.trackme.spring.service.CompanyMasterService;
 import com.trackme.spring.service.MapLatlngService;
 import com.trackme.spring.service.UserMasterService;
 import com.trackme.spring.service.VehicleGroupService;
@@ -40,6 +42,15 @@ public class VehicleMasterController extends BaseController {
 	
 	@Autowired
 	private UserMasterService userMasterService;
+	
+	
+CompanyMasterService companyMasterService;
+	
+	@Autowired(required=true)
+	@Qualifier(value="companyMasterService")
+	public void setCompanyMasterServicee(CompanyMasterService ps){
+		this.companyMasterService = ps;
+	}
 	
 	
 	public VehicleGroupService getVehicleGroupService() {
@@ -120,6 +131,11 @@ public class VehicleMasterController extends BaseController {
   
     @RequestMapping("/VehicleMasterEdit")
     public String editVehicleMaster(@RequestParam("id") String id, Model model, HttpServletRequest request, HttpServletResponse response){
+    	List<CompanyMaster> companyMasters=	this.companyMasterService.listCompanyMasters();
+   	 model.addAttribute("companyMasters", companyMasters);
+   	model.addAttribute("vehicleGroup",VehicleGroupService.listVehicleGroup());
+    model.addAttribute("listVehicleMasters", this.vehicleMasterService.listVehicleMasters());
+  	
     	if(id.equals("new")){
     		model.addAttribute("VehicleMaster", new VehicleMaster());
     	}else{
@@ -127,9 +143,7 @@ public class VehicleMasterController extends BaseController {
     		vehicleMaster.setEditFlag(true);
         model.addAttribute("VehicleMaster",vehicleMaster );
         }
-    	model.addAttribute("vehicleGroup",VehicleGroupService.listVehicleGroup());
-        model.addAttribute("listVehicleMasters", this.vehicleMasterService.listVehicleMasters());
-        return "Vehicle_master_addNew";
+    	  return "Vehicle_master_addNew";
     }
     
     

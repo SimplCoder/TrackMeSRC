@@ -59,14 +59,15 @@
                                                     <th width="15%" align="center" valign="middle">Vehicle No/ Name</th>
                                                     <th width="7%" align="center" valign="middle">Device No</th>
                                                     
+                                                    <th width="7%" align="center" valign="middle">Company Name</th>
                                                     <th width="11%" align="center" valign="middle">Phone</th>
                                                     <th width="10%" align="center" valign="middle">Email</th>
                                                     <th width="11%" align="center" valign="middle">Address</th>
                                                     <th width="7%" align="center" valign="middle">City</th>
-                                                    <th width="10%" align="center" valign="middle">Created By</th>
-                                                    <th width="8%" align="center" valign="middle">Created Dt.</th>
-                                                    <th width="10%" align="center" valign="middle">Modify By </th>
-                                                    <th width="8%" align="center" valign="middle">Modify Dt.</th>
+                                                    <th width="7%" align="center" valign="middle">Created By</th>
+                                                    <th width="6%" align="center" valign="middle">Created Dt.</th>
+                                                    <th width="7%" align="center" valign="middle">Modify By </th>
+                                                    <th width="6%" align="center" valign="middle">Modify Dt.</th>
 												
                                                 </tr>
                                             </thead>
@@ -136,6 +137,7 @@ var vehicleJson = ${vehicleMastersJSON};
                      },
                      {data: "vehicleNo"},
                      {data: "unitNo"},
+                     {data: "companyMaster.companyName"},
                     
                      {data: "ownerContact1"},
                      {data: "ownerEmail"},

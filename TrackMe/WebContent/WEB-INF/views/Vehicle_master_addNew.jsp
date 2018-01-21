@@ -46,7 +46,7 @@
 			<form:form action="VehicleMasterSave" commandName ="VehicleMaster" >
 				<div class="col-sm-12 ">
 					<div class="row">
-						<div class="form-group col-sm-4">
+					`<div class="form-group col-sm-4">
 							<label>Vehicle No:</label>
 							
 								<form:hidden path="status" value="Active"/>
@@ -62,6 +62,13 @@
 							<form:hidden path="editFlag" value="${VehicleMaster.editFlag}"/>
 							</c:if>
 						</div>
+						
+						 <div class="form-group col-sm-4">
+                                    <label>Company</label>
+                                   <form:select class="form-control" required="true" path="companyMaster.id" items="${companyMasters}" itemLabel="companyName" itemValue="id"></form:select>
+                                </div>
+                            
+						
 						<div class="form-group col-sm-4">
 							<label>Serial No:</label>
 							<form:input path="unitNo" pattern="\d*" required="true" title="It must be numberic data" type="text" id="unitNo" class="form-control"></form:input>
