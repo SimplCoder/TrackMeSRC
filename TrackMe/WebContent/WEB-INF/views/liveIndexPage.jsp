@@ -855,6 +855,67 @@
             }
         ];
 
+        var doughnutOptions = {
+
+                segmentShowStroke: false,
+                segmentStrokeColor: "#fff",
+                segmentStrokeWidth: 0,
+                percentageInnerCutout: 0,
+                animationSteps: 100,
+                animationEasing: "easeOutBounce",
+                animateRotate: false,
+                animateScale: false,
+                responsive: true,
+                onAnimationComplete: function() {
+                    this.showTooltip(this.segments, true);
+
+                    //Show tooltips in bar chart (issue: multiple datasets doesnt work http://jsfiddle.net/5gyfykka/14/)
+                    //this.showTooltip(this.datasets[0].bars, true);
+
+                    //Show tooltips in line chart (issue: multiple datasets doesnt work http://jsfiddle.net/5gyfykka/14/)
+                    //this.showTooltip(this.datasets[0].points, true);  
+                },
+
+                tooltipEvents: [],
+
+                showTooltips: true,
+
+                // String - Tooltip background colour
+                tooltipFillColor: "rgba(0,0,0,0.4)",
+
+
+                // String - Tooltip label font declaration for the scale label
+                tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+                // Number - Tooltip label font size in pixels
+                tooltipFontSize: 16,
+
+                // String - Tooltip font weight style
+                tooltipFontStyle: "normal",
+
+
+                // String - Tooltip title font colour
+                tooltipTitleFontColor: "#fff",
+
+                // Number - pixel width of padding around tooltip text
+                tooltipYPadding: 2,
+
+                // Number - pixel width of padding around tooltip text
+                tooltipXPadding: 3,
+
+                // Number - Size of the caret on the tooltip
+                tooltipCaretSize: 4,
+
+                // Number - Pixel radius of the tooltip border
+                tooltipCornerRadius: 2,
+
+                // Number - Pixel offset from point x to tooltip edge
+                tooltipXOffset: 2,
+                tooltipYOffset: 1
+
+            };
+
+        
         var ctx6 = document.getElementById("doughnutChart6").getContext("2d");
         var myNewChart6 = new Chart(ctx6).Doughnut(doughnutData6, doughnutOptions);
 
