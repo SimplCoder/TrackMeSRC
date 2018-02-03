@@ -27,18 +27,17 @@
      </div>
       
           <div id="data_1" class="form-group">
-                                        <label>From Date:</label>
-                                       <form:input  autocomplete="off" type ="text" path="fromDate" class="filthypillow-demo"></form:input>
-                                    </div>
+                                    <label>&nbsp;&nbsp;From Date:</label>
+	<form:input type ="text" autocomplete="off" path="fromDate" id="fromDate"/>
+	</div>
           <div id="data_2" class="form-group">
                                         <label>&nbsp;&nbsp;To Date:</label>
-                                       <form:input type ="text" autocomplete="off" path="toDate" class="filthypillow-demo1"></form:input>
+                                       <form:input type ="text" autocomplete="off" id="toDate" path="toDate" ></form:input>
                                     </div>
            <form:hidden path="vehicleNo"/>
           
          &nbsp;&nbsp;&nbsp;<input class="btn  btn-primary" type="submit" value="Go">
-          <input class="btn btn-primary" id ="resetDates"  type="button" value="reset">
-
+      
      </form:form>
      
     <!-- Rohan Code End 4 --> 
@@ -114,7 +113,7 @@
          var startPos;
         if(${vehicleLatlngDetails}==""){
             isDataPresent=false;
-            console.error("no data");
+            //console.error("no data");
         }else{
         vehicleLocationJSON=${vehicleLatlngDetails}; 
         vehicleLocationJSON1=${vehicleLatlngDetails}; 
@@ -176,7 +175,7 @@
         
         }else{
             
-            showEmptyMap();  
+            //showEmptyMap();  
             
         }
         
@@ -1276,54 +1275,7 @@ function removeMarkers(map,position,vehicleNo,location,datetime) {
 
 </script>
 <script type="text/javascript" src="html/js/moment.js"></script>
-  <script type="text/javascript" src="html/js/jquery.filthypillow.js"></script>
-    <link rel="stylesheet" type="text/css" href="html/css/jquery.filthypillow.css">
    
-<script>
-var $fp = $( ".filthypillow-demo" );
-
-var minDate;
-var maxDate;
-
-$fp.filthypillow( {
-	minDateTime:minDate,
-	use24hours:true,
-	
-	} );
-
-$fp.on( "focus", function( ) {
-	$fp.filthypillow( "show" );
-    } );
-$fp.on( "fp:save", function( e, dateObj ) {
-	
-	minDate=dateObj;
-	$fp.val( dateObj.format( "YYYY-MM-DD HH:mm:ss" ) );
-    $fp.filthypillow( "hide" );
-    } );
-
-
-var $fp1 = $( ".filthypillow-demo1" );
-
-$fp1.filthypillow( {
-	use24hours:true
-} );
-$fp1.on( "focus", function( ) {
-    $fp1.filthypillow( "show" );
-    } );
-$fp1.on( "fp:save", function( e, dateObj ) {
-	minDate=$fp1.val();
-	$fp1.val( dateObj.format( "YYYY-MM-DD HH:mm:ss" ) );
-    $fp1.filthypillow( "hide" );
-    } ); 
-
-
-$("#resetDates").click(function(){
-	
-
-    $("#fromDate").val("");
-
-    });
-</script>
 <script>
 
 
@@ -1345,7 +1297,7 @@ font-size:12pt;
 .ibox-content {
   background-color: #ffffff;
   color: inherit;
-  padding: 14px 1px 1px 1px;
+  padding: 3px 1px 1px 1px;
   border-color: #e7eaec;
   border-image: none;
   border-style: solid solid none;
@@ -1371,3 +1323,69 @@ select.input-sm {
 </style>
 <!-- Mirrored from kalkisoft.com/adhata/html/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 Dec 2016 18:15:42 GMT -->
 </html>
+<link rel="stylesheet" type="text/css" href="html/css/jquery.datetimepicker.min.css"/>
+<script type="text/javascript" src="html/js/jquery.datetimepicker.full.js"></script>
+<script type="text/javascript">
+//var jqr = jQuery.noConflict();
+// A $( document ).ready() block.
+$( document ).ready(function() {
+   debugger;
+var fromDateVal='${LogIndexSearch.fromDate}';
+var toDateVal='${LogIndexSearch.toDate}';
+if(toDateVal==''){ 
+	var date = new Date()
+	var today = new Date();;
+	date.setDate(today.getDate()+1);
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var day = date.getDate();
+	var hours = 00;
+	var minutes = 00;
+	var seconds = 00;
+
+	toDateVal=year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;	
+}
+
+if(fromDateVal==''){ 
+	var date = new Date();
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var day = date.getDate();
+	var hours = 00;
+	var minutes = 00;
+	var seconds = 00;
+
+	fromDateVal=year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+	console.log(fromDateVal);
+}
+
+
+$('#fromDate').datetimepicker({
+dayOfWeekStart : 1,
+format: 'Y-m-d H:i:s',
+formatTime: 'H:i:s',
+formatDate: 'Y-m-d',
+yearStart:1950,
+yearEnd:2050,
+
+lang:'en'
+});
+
+$('#fromDate').datetimepicker({value:fromDateVal,step:10});
+
+$('#toDate').datetimepicker({
+	dayOfWeekStart : 1,
+	format: 'Y-m-d H:i:s',
+	formatTime: 'H:i:s',
+	formatDate: 'Y-m-d',
+	lang:'en',
+	//disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
+	//startDate:	'1986/01/05'
+	});
+$('#toDate').datetimepicker({value:toDateVal,step:10});
+console.log( "ready!" );
+});
+
+</script>
+
+
