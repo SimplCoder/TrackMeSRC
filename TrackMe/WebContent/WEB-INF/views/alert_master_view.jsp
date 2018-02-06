@@ -56,10 +56,10 @@
                                                         <th>Sudden Break</th>
                                                         <th>Idle Time</th>
                                                         <th>Panic</th>
-                                                        <th>Geo Fency</th>
+                                                        <th>Geo</th>
                                                        
-                                                        <th>Alert By SMS</th>
-                                                        <th>Alert By Mail</th>
+                                                        <th>SMS</th>
+                                                        <th>Mail</th>
                                                          <th>Snooze Time</th>
                                                         <th>Contact No</th>
                                                         <th>Created By</th>
@@ -116,11 +116,11 @@
               columns:[
                        {data: "vehicleNo",
                     	 "render": function ( data, type, full, meta ) {
-                    	      return '<a href="EditAlertsView?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
+                    	      return '<a title="Edit" href="EditAlertsView?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
                     	 },
                      {data: "vehicleNo",
                         	 "render": function ( data, type, full, meta ) {
-                       	      return '<a href="RemoveAlertsRecord?id='+data+'"><i class="fa fa-trash  icondelete" aria-hidden="true"></i></a>';}           	
+                       	      return '<a title="Delete" href="RemoveAlertsRecord?id='+data+'"><i class="fa fa-trash  icondelete" aria-hidden="true"></i></a>';}           	
                     		 
                      },
                        {data: "vehicleNo"},
@@ -146,14 +146,17 @@
  {
      extend: 'colvis',
     text :'',
+    titleAttr :'Column Selection',
      columns: ':gt(2)'
  },
 
  {
      extend: 'excelHtml5',
+     titleAttr :'Excel Export',
      text :''
   },{
  	    extend:'pdfHtml5',
+ 	   titleAttr :'Pdf Export',
  	    text :''
  	 }
  ]

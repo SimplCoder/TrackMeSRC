@@ -26,7 +26,7 @@
        <div id="page-wrapper2" class="gray-bg">
             <div class="rowx wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-12">
-                    <h2>Vehicle Group Entry </h2>
+                    <h2>Add New Group</h2>
                 </div>
             </div>
             <div class="wrapper wrapper-content  animated fadeInRight">
@@ -44,7 +44,7 @@
                                           
                                            
                                             <c:if test="${VehicleGroup.editFlag==true }">
-						            	<form:input path="id" type="text" disabled="true" id="primaryKey" class="form-control"></form:input>
+						            	<form:input style="width:300px" size="100" path="id" type="text" disabled="true" id="primaryKey" class="form-control"></form:input>
 							
                                     	<form:hidden path="editFlag" value="${VehicleGroup.editFlag}"/>
 											<form:hidden path="createdBy" value="${VehicleGroup.createdBy}"/>
@@ -53,7 +53,7 @@
 							</c:if>
 							<c:if test="${VehicleGroup.editFlag==false }">
 							 	   	<form:hidden path="editFlag" value="${VehicleGroup.editFlag}" />
-                                   	<form:input path="id" type="text" id="primaryKey" class="form-control"></form:input>
+                                   	<form:input  style="width:300px" size="100" path="id" type="text" id="primaryKey" class="form-control"></form:input>
 							
                                     
 							</c:if>
@@ -67,7 +67,7 @@
                            
                               <div class="form-group col-sm-3">
                                 <div class="clearfix"></div>
-                                <label for="checkbox" class="checkbox-inline">${vehicle.vehicleNo} </label>
+                                <label for="checkbox" class="checkbox-inline" style="width:100px;" >${vehicle.vehicleNo} </label>
                                 <form:checkbox class="i-checks" path="vehicleNos" value="${vehicle.vehicleNo}" style="text-align: center; vertical-align: middle;"/>
                                </div>
                   

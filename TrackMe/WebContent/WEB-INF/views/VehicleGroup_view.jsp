@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Role View</title>
+    <title>Vehicle Group View</title>
     <link href="html/css/css.css" rel="stylesheet" type="text/css" />
     <link href="html/css/bootstrap.min.css" rel="stylesheet">
 
@@ -52,8 +52,8 @@
                                                 <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" class="entrydata table table-striped table-bordered new-tbl" id="entrydata">
                                                     <thead>
                                                         <tr class="leftMenu">
-                                                            <th></th>
-															    <th></th>
+                                                            <th  width="3%" ></th>
+															    <th  width="3%"></th>
                                                             <th>Vehicle Group</th>
                                        					   
                                                             
@@ -111,11 +111,11 @@
               columns:[
                        {data: "id",
                     	 "render": function ( data, type, full, meta ) {
-                    	      return '<a href="editVehicleGroup?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
+                    	      return '<a title="Edit" href="editVehicleGroup?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
                     	 },
                      {data: "id",
                         	 "render": function ( data, type, full, meta ) {
-                       	      return '<a href="RemoveVehicleGroupRecord?id='+data+'"><i class="fa fa-trash  icondelete" aria-hidden="true"></i></a>';}           	
+                       	      return '<a title="Delete" href="RemoveVehicleGroupRecord?id='+data+'"><i class="fa fa-trash  icondelete" aria-hidden="true"></i></a>';}           	
                     		 
                      },
                      {data: "id"},
@@ -131,16 +131,19 @@
  			buttons: [
  {
      extend: 'colvis',
-    text :'',
+     text:'',
+     titleAttr :'Column Selection',
      columns: ':gt(2)'
  },
 
  {
      extend: 'excelHtml5',
-     text :''
+     text:'',
+     titleAttr :'Excel Export'
   },{
  	    extend:'pdfHtml5',
- 	    text :''
+ 	   text:'',
+ 	   titleAttr :'Pdf Export'
  	 }
  ]
           }); 

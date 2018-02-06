@@ -120,11 +120,11 @@
               columns:[
                        {data: "id",
                     	 "render": function ( data, type, full, meta ) {
-                    	      return '<a href="EditDriverConfsView?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
+                    	      return '<a title ="Edit" href="EditDriverConfsView?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
                     	 },
                      {data: "id",
                         	 "render": function ( data, type, full, meta ) {
-                       	      return '<a href="RemoveDriverConfsRecord?id='+data+'"><i class="fa fa-trash  icondelete" aria-hidden="true"></i></a>';}           	
+                       	      return '<a title="Delete" href="RemoveDriverConfsRecord?id='+data+'"><i class="fa fa-trash  icondelete" aria-hidden="true"></i></a>';}           	
                     		 
                      },
                        {data: "driverId.driverName"},
@@ -148,16 +148,16 @@
  			buttons: [
  {
      extend: 'colvis',
-    text :'',
+     titleAttr :'Column Selection',
      columns: ':gt(2)'
  },
 
  {
      extend: 'excelHtml5',
-     text :''
+     titleAttr :'Excel Export'
   },{
  	    extend:'pdfHtml5',
- 	    text :''
+ 	   titleAttr :'Pdf Export'
  	 }
  ]
           }); 

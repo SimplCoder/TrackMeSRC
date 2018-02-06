@@ -30,7 +30,14 @@
         
             <div class="rowx wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-12">
-                    <h2>Alert Entry </h2>
+                    <h2>
+                      <c:if test="${Alert.editFlag==true }">
+                                                    Alert Update </c:if>
+                                                     <c:if test="${Alert.editFlag==false }">
+                                                     Alert Entry
+                                                    </c:if>
+                    
+                    </h2>
                 </div>
             </div>
             <div class="wrapper wrapper-content  animated fadeInRight">

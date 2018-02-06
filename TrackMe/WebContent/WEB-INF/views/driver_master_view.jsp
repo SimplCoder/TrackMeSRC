@@ -57,7 +57,7 @@
                                                                 <th>Driver Name</th>
                                                                 <th>Address</th>
                                                                 <th>Phone</th>
-                                                                <th>Expiry Date</th>
+                                                                <th>Lic. Expiry Date</th>
                                                                 <th>Issued RTO</th>
                                                                 <th>Blood Group</th>
                                                                 <th>Created By</th>
@@ -122,11 +122,11 @@
               columns:[
                        {data: "id",
                     	 "render": function ( data, type, full, meta ) {
-                    	      return '<a href="EditDriverMastersView?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
+                    	      return '<a title="Edit" href="EditDriverMastersView?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
                     	 },
                      {data: "id",
                         	 "render": function ( data, type, full, meta ) {
-                       	      return '<a href="RemoveDriverMastersRecord?id='+data+'"><i class="fa fa-trash  icondelete" aria-hidden="true"></i></a>';}           	
+                       	      return '<a title="Delete" href="RemoveDriverMastersRecord?id='+data+'"><i class="fa fa-trash  icondelete" aria-hidden="true"></i></a>';}           	
                     		 
                      },
                        {data: "driverName"},
@@ -147,16 +147,19 @@
 				buttons: [
 	{
 	    extend: 'colvis',
-	   text :'',
+	    text:'',
+	    titleAttr :'Column Selection',
 	    columns: ':gt(2)'
 	},
 
 	{
 	    extend: 'excelHtml5',
-	    text :''
+	    text:'',
+	    titleAttr :'Excel Export'
 	 },{
 		    extend:'pdfHtml5',
-		    text :''
+		    text:'',
+		    titleAttr :'Pdf Export'
 		 }
 	]
           }); 

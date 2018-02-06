@@ -127,11 +127,11 @@ var vehicleJson = ${vehicleMastersJSON};
             columns:[
                      {data: "vehicleNo",
                     	 "render": function ( data, type, full, meta ) {
-                    	      return '<a href="VehicleMasterEdit?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
+                    	      return '<a title="Edit" href="VehicleMasterEdit?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
                     	 },
                      {data: "vehicleNo",
                         	 "render": function ( data, type, full, meta ) {
-                       	      return '<a href="VehicleMasterRemove?id='+data+'"><i class="fa fa-trash  icondelete" aria-hidden="true"></i></a>';}
+                       	      return '<a  title="Delete" href="VehicleMasterRemove?id='+data+'"><i class="fa fa-trash  icondelete" aria-hidden="true"></i></a>';}
                        	
                     		 
                      },
@@ -158,16 +158,19 @@ var vehicleJson = ${vehicleMastersJSON};
 				buttons: [
 	{
 	    extend: 'colvis',
-	   text :'',
+	    text:'',
+	    titleAttr :'Column Selection',
 	    columns: ':gt(2)'
 	},
 
 	{
 	    extend: 'excelHtml5',
-	    text :''
+	    text:'',
+	    titleAttr :'Excel Export'
 	 },{
 		    extend:'pdfHtml5',
-		    text :''
+		    text:'',
+		    titleAttr :'Pdf Export'
 		 }
 	]
         }); 
