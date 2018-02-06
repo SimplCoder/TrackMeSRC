@@ -75,86 +75,86 @@
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Vehicle Type:</label>
-							<form:input required="true" path="vehicleType" type="text" id="vehicleType" class="form-control"></form:input>
+							<form:input path="vehicleType" type="text" id="vehicleType" class="form-control"></form:input>
 						</div>
 						
 						
 						
 						<div class="form-group col-sm-4">
 							<label>Make:</label>
-							<form:input required="true" path="vehicleMake" type="text" id="vehicleMake" class="form-control"></form:input>
+							<form:input  path="vehicleMake" type="text" id="vehicleMake" class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Vehicle NP:</label>
-							<form:input required="true" path="nationalPermitNo" type="text" id="vehicleNP"  class="form-control"></form:input>
+							<form:input  path="nationalPermitNo" type="text" id="vehicleNP"  class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>NP Expiry Date:</label>
 							<div class="input-group date">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-								<form:input required="true" type="text" path="nationalPermitExpiryDateShow" id="Datepicker1" class="form-control"></form:input>
+								<form:input  type="text" path="nationalPermitExpiryDateShow" id="Datepicker1" class="form-control"></form:input>
 							</div>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Issued RTO:</label>
-							<form:input required="true" path="issuedRTO" type="text" id="issuedRto" class="form-control"></form:input>
+							<form:input  path="issuedRTO" type="text" id="issuedRto" class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Insurance No:</label>
-							<form:input required="true" path="insuranceNo" type="text" id="insuranceNo" class="form-control"></form:input>
+							<form:input  path="insuranceNo" type="text" id="insuranceNo" class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Insurance By:</label>
-							<form:input required="true" path="insuranceIssuedBy" type="text" id="insuranceBy" class="form-control"></form:input>
+							<form:input path="insuranceIssuedBy" type="text" id="insuranceBy" class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Insurance Date:</label>
 							<div class="input-group date">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-								<form:input required="true" type="text" id="Datepicker2" path="insuranceDateShow" class="form-control"></form:input>
+								<form:input  type="text" id="Datepicker2" path="insuranceDateShow" class="form-control"></form:input>
 							</div>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Expiry Date:</label>
 							<div class="input-group date">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-								<form:input required="true" type="text" path="insuranceExpiryDateShow" id="Datepicker3" class="form-control"></form:input>
+								<form:input  type="text" path="insuranceExpiryDateShow" id="Datepicker3" class="form-control"></form:input>
 							</div>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Odi. Meter:</label>
-							<form:input required="true" path="currentOdiMeter" pattern="\d*" title="It must be numberic data" type="text" id="odo" size="15" class="form-control"></form:input>
+							<form:input  path="currentOdiMeter" pattern="\d*" title="It must be numberic data" type="text" id="odo" size="15" class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Current Fuel:</label>
-							<form:input required="true" path="currentFuel" type="text" pattern="\d*" title="It must be numberic data" id="fuel" class="form-control"></form:input>
+							<form:input  path="currentFuel" type="text" pattern="\d*" title="It must be numberic data" id="fuel" class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Service(Km):</label>
-							<form:input required="true" path="serviceKm" type="text" pattern="\d*" title="It must be numberic data" id="service" class="form-control"></form:input>
+							<form:input  path="serviceKm" type="text" pattern="\d*" title="It must be numberic data" id="service" class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Service Date:</label>
 							<div class="input-group date">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-								<form:input required="true" type="text" path="serviceDateShow"  id="Datepicker4" class="form-control"></form:input>
+								<form:input  type="text" path="serviceDateShow"  id="Datepicker4" class="form-control"></form:input>
 							</div>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Owner:</label>
-							<form:input required="true" path="ownerCompanyName" type="text" id="owner" class="form-control"></form:input>
+							<form:input  path="ownerCompanyName" type="text" id="owner" class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Contact 1:</label>
-							<form:input required="true" path="ownerContact1" type="text"  id="owner1" title="Please enter 10 digit number" pattern="[1-9]{1}[0-9]{9}" class="form-control"></form:input>
+							<form:input  path="ownerContact1" type="text"  id="owner1" title="Please enter 10 digit number" pattern="[1-9]{1}[0-9]{9}" class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Contact 2:</label>
-							<form:input required="true" path="ownerContact2" title="Please enter 10 digit number" pattern="[1-9]{1}[0-9]{9}" type="text" id="owner2"  class="form-control"></form:input>
+							<form:input  path="ownerContact2" title="Please enter 10 digit number" pattern="[1-9]{1}[0-9]{9}" type="text" id="owner2"  class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Email:</label>
-							<form:input required="true" path="ownerEmail" type="text" title="Please enter valid email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email"  class="form-control"></form:input>
+							<form:input  path="ownerEmail" type="text" title="Please enter valid email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email"  class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Address:</label>
@@ -162,11 +162,11 @@
 						</div>
 						<div class="form-group col-sm-4">
 							<label>City:</label>
-							<form:input required="true" path="ownerCity" type="text"  id="city" class="form-control"></form:input>
+							<form:input  path="ownerCity" type="text"  id="city" class="form-control"></form:input>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>Pin:</label>
-							<form:input required="true" path="ownerPinCode" pattern="\d*" title="It must be numberic data" type="text" id="pin" class="form-control"></form:input>
+							<form:input path="ownerPinCode" pattern="\d*" title="It must be numberic data" type="text" id="pin" class="form-control"></form:input>
 						</div>
 						
 					</div>

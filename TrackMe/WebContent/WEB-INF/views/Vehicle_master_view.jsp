@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vehicle Service View</title>
+    <title>Vehicle Master View</title>
     <link href="html/css/css.css" rel="stylesheet" type="text/css" />
     <link href="html/css/bootstrap.min.css" rel="stylesheet">
 
@@ -29,7 +29,7 @@
     <div id="page-wrapper2" class="gray-bg">
         <div id="messagePrepender" class="rowx wrapper border-bottom white-bg page-heading">
             <div class="col-sm-6">
-                <h2>Vehicle View</h2>
+                <h2>Vehicle Master View</h2>
               
             </div>
            

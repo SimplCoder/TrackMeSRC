@@ -54,7 +54,6 @@
                                                         <th>User name</th>
                                                          <th>Role</th>
                                                         <th>Company</th>
-                                                        <th>Group</th>
                                                         <th>Created By</th>
                                                         <th>Created Date</th>
                                                         <th>Modify By</th>
@@ -121,7 +120,6 @@
                          {data: "roleMaster.role"},
                          
                          {data: "companyMaster.companyName"},
-                         {data: "vehicleGroup.id"},
                          
                          {data: "createdBy"},
                          {data: "createdDateShow"},

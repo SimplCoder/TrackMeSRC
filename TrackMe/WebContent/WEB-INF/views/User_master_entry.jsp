@@ -93,20 +93,7 @@
                                    <form:select class="form-control" required="true" path="companyMaster.id" items="${companyMasters}" itemLabel="companyName" itemValue="id"></form:select>
                                 </div>
                             
-                            <div class="form-group col-sm-6">
-                                    <label>Group</label>
-                                   <form:select class="form-control" path="vehicleGroup.id">
-                                    <form:option value="">Select</form:option>
-                                  
-                                   
-                                   <c:forEach items="${groups}" var="group">
-                                   
-                                   <form:option value="${group.id}">${group.id}</form:option>
-                                   </c:forEach>
-                                   
-                                   </form:select>
-                                </div>
-                           
+                          
                                
                             
                             <div class="text-center">
