@@ -1761,5 +1761,4 @@ function showVehicleDetails(vehicleNo,ownerName,deviceNo,nextService,imeiNo,driv
   </script>
 
 <div id="dialogtest" title="Vehicle Info">
-  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-</div>
+ </div>

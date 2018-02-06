@@ -223,8 +223,10 @@ li.map-layout-toggle2 > a.active {
     background-position: -810px 0;
 }
 
-.top-title{ font-size:18px; color:#214b7d; padding:15px 0; font-weight:600;}
-
+.top-title{    font-size: 25px;
+    font-weight: bolder;
+    color: #192853;
+    padding: 15px 0;}
 .cust-logo span {
     display: block;
     font-size: 15px;
