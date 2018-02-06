@@ -384,8 +384,8 @@
                                 titleAttr:'Export To PDF',
                                 text: ''
                             }, {
-                            	text: '<span style="font-size: 13px" ><b>Show Map</b></span>',
-                            	className: 'linkButton',
+                            	text: 'Show Map',
+                            	className: 'linkButton showMap',
                             	titleAttr:'Switch To Map View',
                                 action: function ( e, dt, node, config ) {
                                 	window.location.href = "getLiveMap";
@@ -1239,6 +1239,13 @@ select.input-sm {
 .rowx {
     margin-right: -15px;
     margin-left: -15px;
+}
+
+a.dt-button.linkButton.showMap {
+    background-color: #68A229;
+    font-weight: bolder;
+    height: 23px;
+    margin-bottom: 4px;
 }
 </style>
 <script>

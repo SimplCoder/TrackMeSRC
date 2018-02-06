@@ -35,6 +35,13 @@
 	z-index: 9999;
 	background: url(html/images/loader4.gif) center no-repeat #fff;
 }
+
+a.dt-button.linkButton.closeMap {
+    background-color: #68A229;
+    font-weight: bolder;
+    height: 20px;
+    margin-bottom: 4px;
+}
 </style>
 
 </head>
@@ -476,7 +483,8 @@
                                 titleAttr:'Export To PDF',
                                 text: ''
                             }, {
-                            	text: ' <span style="font-size: 13px" ><b>Close Map</b><span> ',
+                            	text: 'Close Map',
+                            	className: 'linkButton closeMap',
                             	titleAttr:'Go to home page',
                                 action: function ( e, dt, node, config ) {
                                 	window.location.href = "home";
