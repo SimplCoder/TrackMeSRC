@@ -60,7 +60,7 @@
                                 <label>Select Vehicle</label>
                                <form:select  path="vehicleNo" id="vehicle" class="form-control">
    
-    <form:options items="${VehicleMasters}" itemValue="vehicleNo" itemLabel="vehicleNo"></form:options>
+    <form:options items="${vehicleMasters}" itemValue="vehicleNo" itemLabel="vehicleNo"></form:options>
     </form:select>    </div>
 						
 						<div class="form-group col-sm-6">
@@ -72,7 +72,7 @@
                                 <label>Select Driver</label>
                                <form:select  path="driverMaster.id" id="driver" class="form-control">
    
-    <form:options items="${DriverMasters}" itemValue="id" itemLabel="driverName"></form:options>
+    <form:options items="${driverMasters}" itemValue="id" itemLabel="driverName"></form:options>
     </form:select>    </div>
 						
 							<div class="form-group col-sm-6">
@@ -226,16 +226,12 @@
 		});
 		
 	
-    $('#startDate').datepicker({
+    $('#date').datepicker({
         autoclose: true,
         height: 100
 
     });
-    $('#endDate').datepicker({
-        autoclose: true,
-        height: 100
-    });
-    
+   
 		
     </script>
 </body>

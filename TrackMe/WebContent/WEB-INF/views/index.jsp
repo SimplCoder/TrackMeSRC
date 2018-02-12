@@ -413,15 +413,33 @@ a.dt-button.linkButton.closeMap {
                             {
                                 data: "description",
                                 "render": function(data, type, full, meta) {
-                                    
-                                //	updateMarker(allVehicleAjaxArr, data);
                                 	var bgColor = '#39d647';
-                                    
+									var textColor= 'black';
+;                                    
                                 	 if (full.description == 'Poll R' ||full.description == 'Ignition Off' || full.description == 'Health Check') {
                                          bgColor = '#ff5062fc';
                                          
-                                     } 
-                                    return '<div style="background-color:'+bgColor+'"><span  style="color:#fff;">' + data + '<span></div>';
+                                     }
+									if (full.description == 'Slow/Idling ' ) {
+                                         bgColor = '#ffb049';
+										
+                                         
+                                     }
+									 if (full.description == 'Ignition On' ) {
+                                         bgColor = '#4997ff';
+                                       
+                                     }
+									 if (full.description == 'Moving' || full.description == 'Overspeed') {
+                                         bgColor = '#80f282';
+                                       
+                                     }
+									 
+									 if (full.description == 'Overspeed' ||full.description == 'Harsh Break' || full.description == 'Harsh Accel Start') {
+                                         
+                                         textColor='red';
+                                     }
+									 
+                                    return '<div style="background-color:'+bgColor+';margin: 0px -4px 0px -4px;"><span  style="color:'+textColor+'">' + data + '<span></div>';
                                 }
                             },{
                                 data: "location"

@@ -116,7 +116,7 @@
         	  dom: '<"top"lBf>rt<"bottom"p><"clear">',
           	data:vehicleServiceJSON,
               columns:[
-                       {data: "id",
+                       {data: "serviceId",
                     	 "render": function ( data, type, full, meta ) {
                     	      return '<a href="EditVehicleServicesView?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
                     	 },
