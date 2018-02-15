@@ -124,10 +124,10 @@ a.dt-button.linkButton.closeMap {
                                                     <!--  <li class="map-vehicles"><a href="#" class="">&nbsp;</a> </li>-->
                                                     <!-- <li class="map-landmarks"><a href="#">&nbsp;</a></li>-->
                                                     <li class="map-layout-toggle1">
-                                                        <a class="map-layout-togglea1 active" href="javascript:void(0)" onclick="reSize('side')"></a>
+                                                        <a class="map-layout-togglea1 active" title="Vertical Split View" href="javascript:void(0)" onclick="reSize('side')"></a>
                                                     </li>
                                                     <li class="map-layout-toggle2">
-                                                        <a href="javascript:void(0)" class="map-layout-togglea2" onclick="reSize('wide')"></a>
+                                                        <a href="javascript:void(0)" class="map-layout-togglea2" title="Horizontal Split View" onclick="reSize('wide')"></a>
                                                     </li>
                                                     <!-- <li class="map-icon-medium"><a class="active" href="#">&nbsp;</a></li>-->
                                                     <!-- <li class="map-icon-large"><a href="#" class="">&nbsp;</a></li>-->
@@ -403,7 +403,7 @@ a.dt-button.linkButton.closeMap {
                                  
                                 	updateMarker(allVehicleAjaxArr, data);
                                 	
-                                    return '<div ><img  style="width:15px;height:15px;" onClick="showVehicleDetails(\''+full.vehicleno+'\',\''+full.ownername+'\',\''+full.deviceno+'\',\''+full.nextservice+'\',\''+full.imeino+'\',\''+full.drivername+'\',\''+full.driverphone+'\',\''+full.gsmnumber+'\',\''+full.odometer+'\',\''+full.ownerphone+'\',\''+full.vehicletype+'\')" src="html/images/plus.png">&nbsp; &nbsp<a target="_blank" style="color:black" href="Vehicle_DetailedLogs?id=' + data + '" rel="external">  <b>' + data + '</b></a></div>';
+                                    return '<div ><img  style="width:15px;height:15px;" onClick="showVehicleDetails(\''+full.vehicleno+'\',\''+full.ownername+'\',\''+full.deviceno+'\',\''+full.nextservice+'\',\''+full.imeino+'\',\''+full.drivername+'\',\''+full.driverphone+'\',\''+full.gsmnumber+'\',\''+full.odometer+'\',\''+full.ownerphone+'\',\''+full.vehicletype+'\')" src="html/images/plus.png">&nbsp; &nbsp<a target="_blank" style="color:black" title="Retrac View" href="Vehicle_DetailedLogs?id=' + data + '" rel="external">  <b>' + data + '</b></a></div>';
                                 }
                             }, {
                                 data: "datetime1"
@@ -442,7 +442,14 @@ a.dt-button.linkButton.closeMap {
                                     return '<div style="background-color:'+bgColor+';margin: 0px -4px 0px -4px;"><span  style="color:'+textColor+'">' + data + '<span></div>';
                                 }
                             },{
-                                data: "location"
+                                data: "location",
+                                "render": function(data, type, full, meta) {
+                                	if(typeof data == 'undefined' ||data == null||data == ''){
+                                		return getAddressFromLatLong(full.latitude,
+                                		full.longitude);
+                                	}
+                                	return data;
+                                }
                             },
                            
                             {
@@ -1772,10 +1779,26 @@ function showVehicleDetails(vehicleNo,ownerName,deviceNo,nextService,imeiNo,driv
 	}).dialog('widget').position({ my: 'left', at: 'left', of: $(this) });
 ;
 	
-    
-  
-    
+         
   }
+  
+  
+  function  getAddressFromLatLong( lati , longi ){
+	var theUrl ="http://maps.googleapis.com/maps/api/geocode/json?latlng="+lati+","+longi+"&sensor=true";
+	var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    var textAddress=xmlHttp.responseText;
+    try{
+    	var jsonAdd= JSON.parse(textAddress);
+    return jsonAdd.results["0"].formatted_address; }
+    catch(e){
+    	return "";
+    }
+     
+  
+  }
+  
   </script>
 
 <div id="dialogtest" title="Vehicle Info">

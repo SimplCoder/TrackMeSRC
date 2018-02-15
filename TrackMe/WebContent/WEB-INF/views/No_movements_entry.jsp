@@ -166,6 +166,9 @@
 <script type="text/javascript" src="html/js/icheck.min.js"></script>
     <!-- iCheck -->
     <script>
+    $('#hdr_configuration').addClass("dropdown active");
+		$('#hdr_configuration_link').click();
+		$('#hdr_NoMovement').addClass("active");
        
         $('.i-checks').iCheck({
             checkboxClass: 'icheckbox_square-green',

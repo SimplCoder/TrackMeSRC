@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="text-right">
-                        <a href="addRouteMastersView" target="frame1" style="width:120px" class="btn btn-primary">Add Route</a>
+                        <a href="addRouteMastersView" target="_blank" style="width:120px" class="btn btn-primary">Add Route</a>
                     </div>
                 </div>
             </div>

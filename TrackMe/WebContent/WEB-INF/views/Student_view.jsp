@@ -38,7 +38,7 @@
               
                
                     <div class="text-right">
-                        <a href="addNoStudents" target="frame1" style="width:140px" class="btn btn-primary">Add New Student</a>
+                        <a href="addNoStudents" target="_blank" style="width:140px" class="btn btn-primary">Add New Student</a>
                     </div>
                 </div>
                 </div>

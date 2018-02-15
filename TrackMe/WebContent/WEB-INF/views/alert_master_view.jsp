@@ -30,7 +30,7 @@
                 </div>
 				<div class="col-sm-6">
                     <div class="text-right">
-                        <a href="addAlertsView" target="frame1" style="width:120px" class="btn btn-primary">Add Alert</a>
+                        <a href="addAlertsView" target="_blank" style="width:120px" class="btn btn-primary">Add Alert</a>
                     </div>
                 </div>
                 

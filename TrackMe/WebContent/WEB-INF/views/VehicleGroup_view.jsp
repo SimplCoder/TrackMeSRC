@@ -28,7 +28,7 @@
                 </div>
                <div class="col-sm-6">
                     <div class="text-right">
-                        <a href="NewVehicleGroup" target="frame1" style="width:160px" class="btn btn-primary">Add New Group</a>
+                        <a href="NewVehicleGroup" target="_blank" style="width:160px" class="btn btn-primary">Add New Group</a>
                     </div>
                 </div>
             </div>

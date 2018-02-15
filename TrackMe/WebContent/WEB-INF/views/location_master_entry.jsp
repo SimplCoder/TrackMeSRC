@@ -248,6 +248,10 @@ input#addlocation {
 		src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
 	<script type="text/javascript" src="html/js/icheck.min.js"></script>
 	<script type="text/javascript">
+	 $('#hdr_settings').addClass("dropdown active");
+		$('#hdr_settings_link').click();
+		$('#hdr_vehicleLocation').addClass("active");
+
 		$('#data_1 .input-group.date').datepicker({
 			autoclose : true
 		});

@@ -56,7 +56,7 @@
                                 <div class="form-group col-sm-6">
                                     <label for="txtroute">Select Route :</label>
                                     <form:select path="routeName" id="routeName" class="form-control">
-
+<form:option value="" label="select" />
 									<form:options items="${routes}" itemValue="routeName"
 										itemLabel="routeName"></form:options>
 								</form:select>
@@ -192,6 +192,11 @@
 <script type="text/javascript" src="html/js/bootstrap-timepicker.js"></script>
 <script type="text/javascript" src="html/js/icheck.min.js"></script>
     <script type="text/javascript">
+
+  	 $('#hdr_settings').addClass("dropdown active");
+ 		$('#hdr_settings_link').click();
+ 		$('#hdr_routeScheduling').addClass("active");
+
         $('#startDate').datepicker({
             autoclose: true
         });

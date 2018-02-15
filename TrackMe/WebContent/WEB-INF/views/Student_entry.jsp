@@ -113,7 +113,7 @@
 								<label>Pick-Up Schedule:</label>
 								<form:select path="routeScheduleId" id="routeScheduleId"
 									class="form-control">
-
+<form:option value="" label="select" />
 									<form:options items="${routeSchedules}" itemValue="scheduleName"
 										itemLabel="scheduleName"></form:options>
 								</form:select>
@@ -141,7 +141,7 @@
 														<div class="form-group col-sm-6">
 								<label>Pickup Location:</label>
 								<form:select path="pickUpLocation" id="pickuplocation" class="form-control">
-
+<form:option value="" label="select" />
 									<form:options items="${locations}" itemValue="locationName"
 										itemLabel="locationName"></form:options>
 								</form:select>
@@ -151,7 +151,7 @@
 														<div class="form-group col-sm-6">
 								<label>Drop Location:</label>
 								<form:select path="dropLocation" id="dropLocation" class="form-control">
-
+<form:option value="" label="select" />
 									<form:options items="${locations}" itemValue="locationName"
 										itemLabel="locationName"></form:options>
 								</form:select>
@@ -208,8 +208,10 @@
 	<script type="text/javascript" src="html/js/icheck.min.js"></script>
 	<!-- iCheck -->
 	<script>
-       
-        $('.i-checks').iCheck({
+	  $('#hdr_student').addClass("dropdown active");
+		$('#hdr_student_link').click();
+		$('#hdr_students').addClass("active");
+		$('.i-checks').iCheck({
             checkboxClass: 'icheckbox_square-green',
             radioClass: 'iradio_square-green'
             

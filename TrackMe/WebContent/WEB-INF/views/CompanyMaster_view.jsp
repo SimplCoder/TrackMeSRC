@@ -28,7 +28,7 @@
                 </div>
                <div class="col-sm-6">
                     <div class="text-right">
-                        <a href="addNoCompanyMasters" target="frame1" style="width:160px" class="btn btn-primary">Add New Company</a>
+                        <a href="addNoCompanyMasters" target="_blank" style="width:160px" class="btn btn-primary">Add New Company</a>
                     </div>
                 </div>
             </div>

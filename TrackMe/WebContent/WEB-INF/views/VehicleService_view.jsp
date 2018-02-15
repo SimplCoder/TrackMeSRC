@@ -28,7 +28,7 @@
                 </div>
                <div class="col-sm-6">
                     <div class="text-right">
-                        <a href="addNoVehicleServices" target="frame1" style="width:160px" class="btn btn-primary">Add New Service</a>
+                        <a href="addNoVehicleServices" target="_blank" style="width:160px" class="btn btn-primary">Add New Service</a>
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
               columns:[
                        {data: "serviceId",
                     	 "render": function ( data, type, full, meta ) {
-                    	      return '<a href="EditVehicleServicesView?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
+                    	      return '<a  href="EditVehicleServicesView?id='+data+'"><i class="fa fa-pencil-square-o iconedit"  aria-hidden="true"></i></a>';}
                     	 },
                      {data: "id",
                         	 "render": function ( data, type, full, meta ) {

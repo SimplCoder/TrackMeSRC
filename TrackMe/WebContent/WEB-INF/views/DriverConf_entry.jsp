@@ -59,19 +59,20 @@
 								<label>Driver:</label>
 							<form:select path="driverId.id" id="driverId"
 									class="form-control">
-
+<form:option value="" label="select" />
 									<form:options items="${drivers}" itemValue="id"
 										itemLabel="driverName"></form:options>
 								</form:select></div>
 								
 								<div class="form-group col-sm-6">
 								<label>Vehicle:</label>
-							<form:select path="vehicleNo" id="vehicleN"
-									class="form-control">
+								<form:select path="vehicleNo" id="vehicleN" class="form-control">
+									<form:option value="" label="select" />
 
 									<form:options items="${vehicles}" itemValue="vehicleNo"
 										itemLabel="vehicleNo"></form:options>
-								</form:select></div>
+								</form:select>
+							</div>
 
 							
 							                                    
@@ -131,7 +132,8 @@
                                         </div>
                                   
 							
-
+ <br />
+                            <div style="text-align: center">
 							<c:if test="${DriverConf.editFlag==true }">
 
 								<input name="action" type="submit" class="btn btn-primary"
@@ -144,6 +146,7 @@
 							</c:if>
 							<input name="button3" type="button" class="btn btn-danger"
 								id="button3" onclick="location.href = 'DriverConfs'" value="Exit">
+								</div>
 					</div>
 					</form:form>
 				</div>
@@ -182,7 +185,9 @@
 	<script type="text/javascript" src="html/js/icheck.min.js"></script>
 	<!-- iCheck -->
 	<script>
-       
+	  $('#hdr_settings').addClass("dropdown active");
+		$('#hdr_settings_link').click();
+		$('#hdr_driverConfs').addClass("active");
         $('.i-checks').iCheck({
             checkboxClass: 'icheckbox_square-green',
             radioClass: 'iradio_square-green'

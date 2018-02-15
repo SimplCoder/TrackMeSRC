@@ -106,7 +106,7 @@
 							     <input name="action" type="submit"  class="btn  btn-primary" id="Submit1" value="Add Route" />
                            </c:if>
                             
-                                <input name="button3" type="button" class="btn btn-danger" onclick="location.href = 'ViewRouteDetails'" id="button3" value="Close" />
+                                <input name="button3" type="button" class="btn btn-danger" onclick="location.href = 'ViewRouteDetails'" id="button3" value="Exit" />
                             </div>
                         </div>
                   </form:form>
@@ -135,6 +135,10 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="html/js/icheck.min.js"></script>
     <script type="text/javascript">
+
+  	 $('#hdr_settings').addClass("dropdown active");
+ 		$('#hdr_settings_link').click();
+ 		$('#hdr_vehicleRoute').addClass("active");
         $('#data_1 .input-group.date').datepicker({
             autoclose: true
         });

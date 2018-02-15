@@ -488,6 +488,9 @@
 
     </body>
     <script>
+    $('#hdr_settings').addClass("dropdown active");
+		$('#hdr_settings_link').click();
+		$('#hdr_goeFence').addClass("active");
     function addVehicle() {
         var location = document.getElementById("vehicle");
         var table = document.getElementById("entrydata");

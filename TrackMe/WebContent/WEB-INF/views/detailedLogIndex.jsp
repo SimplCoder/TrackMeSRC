@@ -183,7 +183,7 @@
               var map_canvas = document.getElementById('map');
                 var map_options = {
                     center: {lat: 18.5204, lng: 73.8567},
-                    zoom: 10,
+                    zoom: 16,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 }   
              map = new google.maps.Map(map_canvas, map_options)
@@ -213,7 +213,7 @@
             var map_canvas = document.getElementById('map');
             var map_options = {
             center: new google.maps.LatLng(vehicleLocationJSON[0].latitude,vehicleLocationJSON[0].longitude),
-            zoom: 10,
+            zoom: 16,
             mapTypeId: google.maps.MapTypeId.ROADMAP
                               }   
              map = new google.maps.Map(map_canvas, map_options)
@@ -260,7 +260,7 @@
                     var map_canvas = document.getElementById('map');
                     var map_options = {
                     center: {lat: 18.5204, lng: 73.8567},
-                    zoom: 10,
+                    zoom: 16,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                                       }   
                      map = new google.maps.Map(map_canvas, map_options)
@@ -523,7 +523,16 @@
                      }},
                      {data: "description"},
                      {data: "speed"},
-                     {data: "location"}
+                     {data: "location",
+                         "render": function(data, type, full, meta) {
+                         	if(typeof data == 'undefined' ||data == null||data == ''){
+                         		return getAddressFromLatLong(full.latitude,
+                         		full.longitude);
+                         	}
+                         	return data;
+                         }
+                    	 
+                     }
                     ],   ordering:false,
        			 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
        			 language: {
@@ -1328,10 +1337,25 @@ select.input-sm {
 <link rel="stylesheet" type="text/css" href="html/css/jquery.datetimepicker.min.css"/>
 <script type="text/javascript" src="html/js/jquery.datetimepicker.full.js"></script>
 <script type="text/javascript">
-//var jqr = jQuery.noConflict();
-// A $( document ).ready() block.
+
+
+function  getAddressFromLatLong( lati , longi ){
+	var theUrl ="http://maps.googleapis.com/maps/api/geocode/json?latlng="+lati+","+longi+"&sensor=true";
+	var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    var textAddress=xmlHttp.responseText;
+    try{
+    	var jsonAdd= JSON.parse(textAddress);
+    return jsonAdd.results["0"].formatted_address; }
+    catch(e){
+    	return "";
+    }
+     
+  
+  }
+
 $( document ).ready(function() {
-   debugger;
 var fromDateVal='${LogIndexSearch.fromDate}';
 var toDateVal='${LogIndexSearch.toDate}';
 if(toDateVal==''){ 
@@ -1384,10 +1408,12 @@ $('#toDate').datetimepicker({
 	//disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
 	//startDate:	'1986/01/05'
 	});
+		
 $('#toDate').datetimepicker({value:toDateVal,step:10});
-console.log( "ready!" );
 });
+
 
 </script>
 
-
+<script>
+</script>

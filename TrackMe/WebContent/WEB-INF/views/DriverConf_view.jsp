@@ -28,7 +28,7 @@
                 </div>
                <div class="col-sm-6">
                     <div class="text-right">
-                        <a href="addNoDriverConfs" target="frame1" style="width:160px" class="btn btn-primary">Add New Schedule</a>
+                        <a href="addNoDriverConfs" target="_blank" style="width:160px" class="btn btn-primary">Add New Schedule</a>
                     </div>
                 </div>
             </div>

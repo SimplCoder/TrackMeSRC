@@ -130,11 +130,11 @@
                                                     <thead>
                                                         <tr class="leftMenu">
 
-                                                            <th width="16%" align="center" valign="middle">Vehicle No</th>
+                                                            <th width="12%" align="center" valign="middle">Vehicle No</th>
                                                              <th width="10%" align="center" valign="middle">Date/Time</th>
                                                             
-                                                            <th width="12%" align="center" valign="middle">Status</th>
-                                                                <th width="42%" align="center" valign="middle">Location</th>
+                                                            <th width="10%" align="center" valign="middle">Status</th>
+                                                                <th width="48%" align="center" valign="middle">Location</th>
                                                         
                                                             <th width="4%" align="center" valign="middle">Speed</th>
                                                            <th width="4%" align="center" valign="middle">Dist</th>                     
@@ -302,7 +302,7 @@
                                  
                                 	//updateMarker(allVehicleAjaxArr, data);
                                 	
-                                    return '<div ><img  style="width:15px;height:15px;" onClick="showVehicleDetails(\''+full.vehicleno+'\',\''+full.ownername+'\',\''+full.deviceno+'\',\''+full.nextservice+'\',\''+full.imeino+'\',\''+full.drivername+'\',\''+full.driverphone+'\',\''+full.gsmnumber+'\',\''+full.odometer+'\',\''+full.ownerphone+'\',\''+full.vehicletype+'\')" src="html/images/plus.png">&nbsp; &nbsp<a style="color:black" target="_blank" href="Vehicle_DetailedLogs?id=' + data + '" rel="external">  <b>' + data + '</b></a></div>';
+                                    return '<div ><img  style="width:15px;height:15px;" onClick="showVehicleDetails(\''+full.vehicleno+'\',\''+full.ownername+'\',\''+full.deviceno+'\',\''+full.nextservice+'\',\''+full.imeino+'\',\''+full.drivername+'\',\''+full.driverphone+'\',\''+full.gsmnumber+'\',\''+full.odometer+'\',\''+full.ownerphone+'\',\''+full.vehicletype+'\')" src="html/images/plus.png">&nbsp; &nbsp<a style="color:black" target="_blank" title="Retrac view" href="Vehicle_DetailedLogs?id=' + data + '" rel="external">  <b>' + data + '</b></a></div>';
                                 }
                             }
                             ,
@@ -344,7 +344,14 @@
                                 }
                             },
                             {
-                                data: "location"
+                                data: "location",
+                                "render": function(data, type, full, meta) {
+                                	if(typeof data == 'undefined' ||data == null||data == ''){
+                                		return getAddressFromLatLong(full.latitude,
+                                		full.longitude);
+                                	}
+                                	return data;
+                                }
                             }
                             ,
                         
@@ -876,11 +883,11 @@
         ];
 
         var doughnutOptions = {
-
+        		
                 segmentShowStroke: false,
                 segmentStrokeColor: "#fff",
                 segmentStrokeWidth: 0,
-                percentageInnerCutout: 0,
+                percentageInnerCutout: 95,
                 animationSteps: 100,
                 animationEasing: "easeOutBounce",
                 animateRotate: false,
@@ -901,14 +908,14 @@
                 showTooltips: true,
 
                 // String - Tooltip background colour
-                tooltipFillColor: "rgba(0,0,0,0.4)",
+                tooltipFillColor: "#fff",
 
 
                 // String - Tooltip label font declaration for the scale label
                 tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
 
                 // Number - Tooltip label font size in pixels
-                tooltipFontSize: 16,
+                tooltipFontSize: 24,
 
                 // String - Tooltip font weight style
                 tooltipFontStyle: "normal",
@@ -916,9 +923,9 @@
 
                 // String - Tooltip title font colour
                 tooltipTitleFontColor: "#fff",
-
+                tooltipFontColor: "#000",
                 // Number - pixel width of padding around tooltip text
-                tooltipYPadding: 2,
+                tooltipYPadding: 13,
 
                 // Number - pixel width of padding around tooltip text
                 tooltipXPadding: 3,
@@ -930,8 +937,8 @@
                 tooltipCornerRadius: 2,
 
                 // Number - Pixel offset from point x to tooltip edge
-                tooltipXOffset: 2,
-                tooltipYOffset: 1
+                tooltipXOffset: 20,
+                tooltipYOffset: 20
 
             };
 
@@ -948,6 +955,8 @@
 </script>
 
 <style>
+
+
     button.dt-button,
     div.dt-button,
     a.dt-button {
@@ -1304,6 +1313,22 @@ function showVehicleDetails(vehicleNo,ownerName,deviceNo,nextService,imeiNo,driv
     
   
     
+  }
+  
+function  getAddressFromLatLong( lati , longi ){
+	var theUrl ="http://maps.googleapis.com/maps/api/geocode/json?latlng="+lati+","+longi+"&sensor=true";
+	var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    var textAddress=xmlHttp.responseText;
+    try{
+    	var jsonAdd= JSON.parse(textAddress);
+    return jsonAdd.results["0"].formatted_address; }
+    catch(e){
+    	return "";
+    }
+     
+  
   }
   </script>
 

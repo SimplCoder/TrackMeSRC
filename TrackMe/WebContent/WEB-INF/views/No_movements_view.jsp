@@ -28,7 +28,7 @@
                 </div>
                <div class="col-sm-6">
                     <div class="text-right">
-                        <a href="addNoMovements" target="frame1" style="width:160px" class="btn btn-primary">Add New Movement</a>
+                        <a href="addNoMovements" target="_blank" style="width:160px" class="btn btn-primary">Add New Movement</a>
                     </div>
                 </div>
             </div>

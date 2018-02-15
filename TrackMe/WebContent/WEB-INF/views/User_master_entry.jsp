@@ -123,6 +123,9 @@
     <script type="text/javascript" src="html/js/jspdf.min.js"></script>
     <script>
         $(document).ready(function () {
+        	$('#hdr_configuration').addClass("dropdown active");
+       		$('#hdr_configuration_link').click();
+       		$('#hdr_UserMasters').addClass("active");
             $('#entrydata').DataTable();
             $('.i-checks').iCheck({
                 checkboxClass: 'icheckbox_square-green',

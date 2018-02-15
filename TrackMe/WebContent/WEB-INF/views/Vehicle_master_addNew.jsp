@@ -212,7 +212,9 @@
     <!-- iCheck -->
     <script>
     
-    
+    $('#hdr_configuration').addClass("dropdown active");
+	$('#hdr_configuration_link').click();
+	$('#hdr_vehicleMaster').addClass("active");
     
         $('#Datepicker1').datepicker({
             autoclose: true

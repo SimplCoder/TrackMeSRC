@@ -28,7 +28,7 @@
                 </div>
                <div class="col-sm-6">
                     <div class="text-right">
-                        <a href="addNoVehicleIOs" target="frame1" style="width:160px" class="btn btn-primary">Add New Vehicle IO</a>
+                        <a href="addNoVehicleIOs" target="_blank" style="width:160px" class="btn btn-primary">Add New Vehicle IO</a>
                     </div>
                 </div>
             </div>

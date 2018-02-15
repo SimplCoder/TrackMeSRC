@@ -56,7 +56,7 @@
 						<div class="form-group col-sm-6">
 							<label>Vehicle:</label>
 							<form:select  path="vehicleNo" id="vehicleNo" class="form-control">
-   
+   <form:option value="" label="select" />
     <form:options items="${vehicleMasters}" itemValue="vehicleNo" itemLabel="vehicleNo"></form:options>
     </form:select>
 							
@@ -66,7 +66,7 @@
 						<div class="form-group col-sm-6">
 							<label>Device No:</label>
 							<form:select  path="deviceNo" id="deviceNo" class="form-control">
-   
+   <form:option value="" label="select" />
     <form:options items="${deviceMasters}" itemValue="deviceNo" itemLabel="deviceNo"></form:options>
     </form:select>
 							
@@ -230,7 +230,9 @@
 <script type="text/javascript" src="html/js/icheck.min.js"></script>
     <!-- iCheck -->
     <script>
-       
+    $('#hdr_configuration').addClass("dropdown active");
+		$('#hdr_configuration_link').click();
+		$('#hdr_vehicleIO').addClass("active");
         $('.i-checks').iCheck({
             checkboxClass: 'icheckbox_square-green',
             radioClass: 'iradio_square-green'

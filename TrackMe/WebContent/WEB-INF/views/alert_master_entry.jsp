@@ -53,7 +53,7 @@
                                         <div class="form-group col-sm-6">
                                            
                                             <div class="radio i-checks">
-                                                <label class="checkbox-inline i-checks">Is Group: </label>
+                                                <label class="checkbox-inline i-checks">Grouped : </label>
                                                 <c:if test="${Alert.editFlag==true }">
                                                     <form:checkbox disabled="true" path="group"/>
                                                     </c:if>
@@ -174,7 +174,9 @@
 <script type="text/javascript" src="html/js/icheck.min.js"></script>
     <!-- iCheck -->
     <script>
-       
+    $('#hdr_configuration').addClass("dropdown active");
+		$('#hdr_configuration_link').click();
+		$('#hdr_Alerts').addClass("active");
         $('.i-checks').iCheck({
             checkboxClass: 'icheckbox_square-green',
             radioClass: 'iradio_square-green'

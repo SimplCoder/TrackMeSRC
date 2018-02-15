@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="text-right">
-                        <a href="Fuel_interface_entry.html" target="frame1" style="width:120px" class="btn btn-primary">Add Nerw</a>
+                        <a href="Fuel_interface_entry.html" target="_blank" style="width:120px" class="btn btn-primary">Add Nerw</a>
                     </div>
                 </div>
             </div>
