@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,10 +20,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trackme.constants.Constant;
 import com.trackme.spring.model.Alert;
+import com.trackme.spring.model.Location;
 import com.trackme.spring.model.UserMaster;
 import com.trackme.spring.model.VehicleGroup;
 import com.trackme.spring.model.VehicleMaster;
 import com.trackme.spring.service.AlertService;
+import com.trackme.spring.service.LocationService;
 import com.trackme.spring.service.VehicleGroupService;
 import com.trackme.spring.service.VehicleMasterService;
 
@@ -42,6 +43,10 @@ private VehicleGroupService vehicleGroupService;
 @Qualifier(value="vehicleMasterService")
 private VehicleMasterService  vehicleMasterService;
 	
+@Autowired(required=true)
+@Qualifier(value="locationService")
+private LocationService  locationService;
+
 	@Autowired(required=true)
 	@Qualifier(value="alertService")
 	public void setAlertService(AlertService ds){
@@ -75,6 +80,9 @@ private VehicleMasterService  vehicleMasterService;
 		ArrayList<VehicleGroup> vehicleGroups = (ArrayList<VehicleGroup>) vehicleGroupService.listVehicleGroup();
 		model.addAttribute("vehicleGroups", vehicleGroups);
 		
+		List<Location> listLocations = (ArrayList<Location>)locationService.listLocations();
+		model.addAttribute("locationList", listLocations);
+		
 		return "alert_master_entry";
 	}
 	
@@ -83,6 +91,8 @@ private VehicleMasterService  vehicleMasterService;
 		Alert alert=this.alertService.getAlertById(id);
 		alert.setEditFlag(true);
 		model.addAttribute("Alert", alert);
+		List<Location> listLocations = (ArrayList<Location>)locationService.listLocations();
+		model.addAttribute("locationList", listLocations);
 		return "alert_master_entry";
 	}
 	
@@ -97,6 +107,8 @@ private VehicleMasterService  vehicleMasterService;
 		ArrayList<VehicleGroup> vehicleGroups = (ArrayList<VehicleGroup>) vehicleGroupService.listVehicleGroup();
 		model.addAttribute("vehicleGroups", vehicleGroups);
 		Alert alertExist=this.alertService.getAlertById(String.valueOf(alert.getVehicleNo()));
+		List<Location> listLocations = (ArrayList<Location>)locationService.listLocations();
+		model.addAttribute("locationList", listLocations);
 		if(alertExist==null){
 			UserMaster currentUser=(UserMaster) request.getSession().getAttribute(Constant.CURRENT_USER);
 			alert.setCreatedBy(currentUser.getUserName());

@@ -113,7 +113,11 @@
 
                                             <label class="checkbox-inline i-checks">Geofence:  </label>
                                             <form:checkbox class="i-checks" path="geofency"  id="Checkbox5"/>&nbsp;&nbsp;
-				 
+											
+											  <label class="checkbox-inline i-checks">Location:  </label>
+                                            <form:checkbox class="i-checks" path="location"  id="Checkbox6"/>&nbsp;&nbsp;
+											
+											
                                         </div>
                                         <div class="form-group col-sm-6">
                                             <label>Alert By</label>
@@ -133,6 +137,21 @@
                                             <label>Contact No</label>
                                             <form:input path="contactNo" type="text" placeholder="Contact No" id="SMSCheckbox" class="form-control"/>
                                         </div>
+										
+										 <div id="locationNameDiv" class="form-group col-sm-6">
+                                            <label>Select Location</label>
+                                          
+										<form:select id="locationName" type="hidden" path="locationName" items="${locationList}" itemLabel="locationName" itemValue="locationName">
+										
+										</form:select>
+										
+										<label class="checkbox-inline i-checks">Vehicle Entry Status: </label>
+                                            <form:checkbox class="i-checks" path="vehicleEntryStatus" id="Checkbox7"/>&nbsp;&nbsp;
+						
+                                            <div class="clearfix"></div>
+                                            <br>
+                                        </div>
+										
                                     </div>
                                     <div class="col-sm-12 text-center ">
                                        <c:if test="${Alert.editFlag==true }">
@@ -200,6 +219,9 @@
 	    	$('#vehicleList').hide();
 	    	$('#groupList').prop('disabled', false);
 	    	$('#groupList').show();
+				if($('#Checkbox6').prop('checked') == true) {
+				 $('#locationNameDiv').show();
+			} 
 			});
 		
 		
@@ -208,11 +230,21 @@
 	    	$('#groupList').hide();
 	    	$('#vehicleList').prop('disabled', false);
 	    	$('#vehicleList').show();
+				if($('#Checkbox6').prop('checked') == false) {
+			$('#locationNameDiv').hide();
+		}			
 		});
+		
 		$(document).ready(function(){
+		   $('#locationNameDiv').hide();
+			 
 		    $('input.timepicker').timepicker({
 		    	 scrollbar: true
 		    });
+			
+				
+			
+
 		});
     </script>
 </body>

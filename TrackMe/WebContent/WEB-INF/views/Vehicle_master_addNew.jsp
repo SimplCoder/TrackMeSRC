@@ -169,6 +169,11 @@
 							<form:input path="ownerPinCode" pattern="\d*" title="It must be numberic data" type="text" id="pin" class="form-control"></form:input>
 						</div>
 						
+						<div class="form-group col-sm-4">
+							<label>OverSpeed:</label>
+							<form:input path="overSpeed" pattern="\d*" title="It must be numberic data" type="text" id="overSpeed" class="form-control"></form:input>
+						</div>
+						
 					</div>
 					<div class="form-group" style="text-align:center">
 					<c:if test="${VehicleMaster.editFlag==false }">

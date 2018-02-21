@@ -1,14 +1,12 @@
 package com.trackme.spring.model;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -161,6 +159,9 @@ private String serviceDateShow;
 @OneToOne
 @JoinColumn(name="company")
 CompanyMaster companyMaster;
+
+@Column(name="overSpeed")
+private BigDecimal overSpeed;
 
   
   public String getVehicleNo()
@@ -745,6 +746,14 @@ public CompanyMaster getCompanyMaster() {
 
 public void setCompanyMaster(CompanyMaster companyMaster) {
 	this.companyMaster = companyMaster;
+}
+
+public BigDecimal getOverSpeed() {
+	return overSpeed;
+}
+
+public void setOverSpeed(BigDecimal overSpeed) {
+	this.overSpeed = overSpeed;
 }
 
 

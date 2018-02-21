@@ -63,6 +63,19 @@ public class Alert
   @Column(name="contactno")
   private String contactNo;
   
+  @Column(name="locationname")
+  private String locationName;
+  
+  @Transient
+  private Boolean location;
+  
+  @Column(name="harshaccelerate")
+  private Boolean harshAccelerate;
+  
+  @Column(name="vehicleentrystatus")
+  private Boolean vehicleEntryStatus;
+  
+  
   public boolean isGroup()
   {
     return this.group;
@@ -309,6 +322,42 @@ public class Alert
 	public void setToSnooze(String toSnooze) {
 		this.toSnooze = toSnooze;
 	}
+
+	public Boolean getHarshAccelerate() {
+		return harshAccelerate;
+	}
+
+	public void setHarshAccelerate(Boolean harshAccelerate) {
+		this.harshAccelerate = harshAccelerate;
+	}
+
+	public Boolean getVehicleEntryStatus() {
+		return vehicleEntryStatus;
+	}
+
+	public void setVehicleEntryStatus(Boolean vehicleEntryStatus) {
+		this.vehicleEntryStatus = vehicleEntryStatus;
+	}
+
+	public String getLocationName() {
+		return locationName;
+	}
+
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
+	}
+
+	public Boolean getLocation() {
+		return location;
+	}
+
+	public void setLocation(Boolean location) {
+		this.location = location;
+	}
+
+	
+
+
 	
 	
 	

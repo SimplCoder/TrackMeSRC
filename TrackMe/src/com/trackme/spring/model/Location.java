@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -36,6 +38,8 @@ public class Location
 	  private String address;
 	  @Column(name="status")
 	  private String status;
+	 /*
+	  private CompanyMaster companyMaster;*/
 	  
 	  public String getAddress()
 	  {
@@ -229,5 +233,15 @@ public class Location
 		this.editFlag = editFlag;
 	}
 
+/*	public CompanyMaster getCompanyMaster() {
+		return companyMaster;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "companyLocation", referencedColumnName = "id")
+	public void setCompanyMaster(CompanyMaster companyMaster) {
+		this.companyMaster = companyMaster;
+	}
+*/
 
 }
