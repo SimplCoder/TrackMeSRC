@@ -1,5 +1,6 @@
 package com.trackme.spring;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trackme.constants.Constant;
+import com.trackme.spring.model.CompanyMaster;
 import com.trackme.spring.model.DeviceMaster;
 import com.trackme.spring.model.Location;
 import com.trackme.spring.model.UserMaster;
+import com.trackme.spring.service.CompanyMasterService;
 import com.trackme.spring.service.DeviceMasterService;
 import com.trackme.spring.service.LocationService;
 
@@ -29,6 +32,9 @@ public class LocationController extends BaseController{
 	
 	private LocationService locationService;
 	
+	@Autowired(required=true)
+	@Qualifier(value="companyMasterService")
+	private CompanyMasterService companyMasterService;
 	
 	
 	public LocationService getLocationService() {
@@ -60,10 +66,24 @@ public class LocationController extends BaseController{
 		return "location_master_view";
 	}
 	
-	
+	/**
+	 * 
+	 * @param model
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value = "/addLocationView", method = RequestMethod.GET)
 	public String locationView(Model model, HttpServletRequest request, HttpServletResponse response) {	
 		model.addAttribute("location", new Location());
+		List<CompanyMaster> companyList=new ArrayList<CompanyMaster>();
+		UserMaster currentUser=(UserMaster) request.getSession().getAttribute(Constant.CURRENT_USER);
+		if(!currentUser.getRoleMaster().getRole().equals(Constant.ROLE_SUPERUSER)){
+			companyList.add(currentUser.getCompanyMaster());	
+		}else{
+		 companyList = (ArrayList<CompanyMaster>)companyMasterService.listCompanyMasters();
+		}
+		model.addAttribute("companyList", companyList);
 		return "location_master_entry";
 	}
 	
@@ -72,6 +92,14 @@ public class LocationController extends BaseController{
 	public String editLocation(Model model,@RequestParam("name") String name, HttpServletRequest request, HttpServletResponse response) {	
 		Location location=this.locationService.getLocationByName(name);
 		location.setEditFlag(true);
+		List<CompanyMaster> companyList=new ArrayList<CompanyMaster>();
+		UserMaster currentUser=(UserMaster) request.getSession().getAttribute(Constant.CURRENT_USER);
+		if(!currentUser.getRoleMaster().getRole().equals(Constant.ROLE_SUPERUSER)){
+			companyList.add(currentUser.getCompanyMaster());	
+		}else{
+		 companyList = (ArrayList<CompanyMaster>)companyMasterService.listCompanyMasters();
+		}
+		model.addAttribute("companyList", companyList);
 		model.addAttribute("location", location);
 		return "location_master_entry";
 	}
@@ -83,8 +111,16 @@ public class LocationController extends BaseController{
 		public String addLocation(@ModelAttribute("location") Location location, Model model, HttpServletRequest request, HttpServletResponse response){		
 			//Add Driver
 			Location locationExist=this.locationService.getLocationByName(location.getLocationName());
+			List<CompanyMaster> companyList=new ArrayList<CompanyMaster>();
+			UserMaster currentUser=(UserMaster) request.getSession().getAttribute(Constant.CURRENT_USER);
+			if(!currentUser.getRoleMaster().getRole().equals(Constant.ROLE_SUPERUSER)){
+				companyList.add(currentUser.getCompanyMaster());	
+			}else{
+			 companyList = (ArrayList<CompanyMaster>)companyMasterService.listCompanyMasters();
+			}
+			model.addAttribute("companyList", companyList);
+			
 			if(locationExist==null){
-				UserMaster currentUser=(UserMaster) request.getSession().getAttribute(Constant.CURRENT_USER);
 				location.setCreatedBy(currentUser.getUserName());
 				location.setCreatedDate(new Date());
 			
@@ -93,7 +129,6 @@ public class LocationController extends BaseController{
 			
 			} else{
 				if(location.isEditFlag()){
-					UserMaster currentUser=(UserMaster) request.getSession().getAttribute(Constant.CURRENT_USER);
 					location.setModifiedBy(currentUser.getUserName());
 					location.setModifiedDate(new Date());
 				

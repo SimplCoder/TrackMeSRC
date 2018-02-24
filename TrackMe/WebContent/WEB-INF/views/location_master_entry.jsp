@@ -145,6 +145,14 @@ input#addlocation {
 										name="locationdescription" class="form-control" />
 
 								</div>
+								
+								<div class="form-group">
+									<label>Company</label>
+										
+										<form:select id="companyId"  path="companyId" items="${companyList}" itemLabel="companyName" itemValue="id" class="form-control"/>	
+									
+								</div>
+								
 								<div class="form-group">
 									<label>Latitude</label>
 									<form:input type="text" required="true" path="latitude"

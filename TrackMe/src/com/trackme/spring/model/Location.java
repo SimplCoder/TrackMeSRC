@@ -38,8 +38,8 @@ public class Location
 	  private String address;
 	  @Column(name="status")
 	  private String status;
-	 /*
-	  private CompanyMaster companyMaster;*/
+	  @Column(name="companyid")
+	  private Integer companyId;
 	  
 	  public String getAddress()
 	  {
@@ -233,15 +233,13 @@ public class Location
 		this.editFlag = editFlag;
 	}
 
-/*	public CompanyMaster getCompanyMaster() {
-		return companyMaster;
+	public Integer getCompanyId() {
+		return companyId;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "companyLocation", referencedColumnName = "id")
-	public void setCompanyMaster(CompanyMaster companyMaster) {
-		this.companyMaster = companyMaster;
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
 	}
-*/
+
 
 }

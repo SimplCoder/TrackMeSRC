@@ -180,7 +180,7 @@ public void setEditFlag(boolean editFlag) {
 }
   
 @Column(name="status")
-String status;
+private String status;
 
 public String getStatus() {
 	return status;

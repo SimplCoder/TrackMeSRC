@@ -132,7 +132,7 @@
                        {data: "alertBySms"},
                        {data: "alertByMail"},
                        {data: "snoozeTime"},
-                        {data: "contactNo"},
+                       {data: "contactNo"},
                        {data: "createdBy"},
                        {data: "createdDateShow"},
                        {data: "modifiedBy"},  

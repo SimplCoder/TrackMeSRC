@@ -70,4 +70,12 @@ public class LocationDAOImpl implements LocationDAO {
 
 	}
 
+
+	@Override
+	public List<Location> getLocationByCompanyId(Integer companyId) {	
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Location> list = session.createQuery("from Location where companyId ="+companyId+" ").list();	
+		return list;
+	}
+
 }

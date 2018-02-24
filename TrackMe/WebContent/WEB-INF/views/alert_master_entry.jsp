@@ -125,12 +125,9 @@
                                             <label class="checkbox-inline i-checks">SMS: </label>
                                             <form:checkbox path="alertBySms"  class="i-checks" id="SMSCheckbox"/>&nbsp;&nbsp;
                     
-                   
-
                                             <label class="checkbox-inline i-checks">Mail: </label>
                                             <form:checkbox class="i-checks" path="alertByMail" id="mailCheckbox"/>&nbsp;&nbsp;
                    
-                 
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="form-group col-sm-6">
@@ -139,14 +136,18 @@
                                         </div>
 										
 										 <div id="locationNameDiv" class="form-group col-sm-6">
-                                            <label>Select Location</label>
+                                        <label>Select Location</label>
                                           
 										<form:select id="locationName" type="hidden" path="locationName" items="${locationList}" itemLabel="locationName" itemValue="locationName">
 										
 										</form:select>
 										
 										<label class="checkbox-inline i-checks">Vehicle Entry Status: </label>
-                                            <form:checkbox class="i-checks" path="vehicleEntryStatus" id="Checkbox7"/>&nbsp;&nbsp;
+											<label class="checkbox-inline i-checks">In </label>
+                                            <form:checkbox class="i-checks" path="vehicleEntryStatusIn" id="Checkbox7"/>&nbsp;&nbsp;
+											<label class="checkbox-inline i-checks">Out </label>
+                                            <form:checkbox class="i-checks" path="vehicleEntryStatusOut" id="Checkbox8"/>&nbsp;&nbsp;
+											
 						
                                             <div class="clearfix"></div>
                                             <br>

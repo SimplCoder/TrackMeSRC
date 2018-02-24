@@ -72,8 +72,11 @@ public class Alert
   @Column(name="harshaccelerate")
   private Boolean harshAccelerate;
   
-  @Column(name="vehicleentrystatus")
-  private Boolean vehicleEntryStatus;
+  @Column(name="vehicleentrystatusin")
+  private Boolean vehicleEntryStatusIn;
+  
+  @Column(name="vehicleentrystatusout")
+  private Boolean vehicleEntryStatusOut;
   
   
   public boolean isGroup()
@@ -331,13 +334,7 @@ public class Alert
 		this.harshAccelerate = harshAccelerate;
 	}
 
-	public Boolean getVehicleEntryStatus() {
-		return vehicleEntryStatus;
-	}
-
-	public void setVehicleEntryStatus(Boolean vehicleEntryStatus) {
-		this.vehicleEntryStatus = vehicleEntryStatus;
-	}
+	
 
 	public String getLocationName() {
 		return locationName;
@@ -353,6 +350,22 @@ public class Alert
 
 	public void setLocation(Boolean location) {
 		this.location = location;
+	}
+
+	public Boolean getVehicleEntryStatusIn() {
+		return vehicleEntryStatusIn;
+	}
+
+	public void setVehicleEntryStatusIn(Boolean vehicleEntryStatusIn) {
+		this.vehicleEntryStatusIn = vehicleEntryStatusIn;
+	}
+
+	public Boolean getVehicleEntryStatusOut() {
+		return vehicleEntryStatusOut;
+	}
+
+	public void setVehicleEntryStatusOut(Boolean vehicleEntryStatusOut) {
+		this.vehicleEntryStatusOut = vehicleEntryStatusOut;
 	}
 
 	

@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.trackme.constants.Constant;
-import com.trackme.spring.dao.DeviceMasterDAO;
 import com.trackme.spring.dao.LocationDAO;
-import com.trackme.spring.model.DeviceMaster;
 import com.trackme.spring.model.Location;
 
 @Service("locationService")
@@ -49,6 +47,12 @@ public class LocationServiceImpl implements LocationService{
 		location.setStatus(Constant.STATUS_INACTIVE);
 		locationDAO.updateLocation(location);
 			
+	}
+
+	@Override
+	@Transactional
+	public List<Location> listLocations(Integer companyId) {	
+		return locationDAO.getLocationByCompanyId(companyId);
 	}
 
 }

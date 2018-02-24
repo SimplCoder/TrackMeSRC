@@ -20,11 +20,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trackme.constants.Constant;
 import com.trackme.spring.model.Alert;
+import com.trackme.spring.model.CompanyMaster;
 import com.trackme.spring.model.Location;
 import com.trackme.spring.model.UserMaster;
 import com.trackme.spring.model.VehicleGroup;
 import com.trackme.spring.model.VehicleMaster;
 import com.trackme.spring.service.AlertService;
+import com.trackme.spring.service.CompanyMasterService;
 import com.trackme.spring.service.LocationService;
 import com.trackme.spring.service.VehicleGroupService;
 import com.trackme.spring.service.VehicleMasterService;
@@ -53,7 +55,9 @@ private LocationService  locationService;
 		this.alertService = ds;
 	}
 	
-	
+	@Autowired(required=true)
+	@Qualifier(value="companyMasterService")
+	private CompanyMasterService companyMasterService;	
 	
 	@RequestMapping(value = "/Alerts", method = RequestMethod.GET)
 	public String listAlerts(Model model, HttpServletRequest request, HttpServletResponse response) {	
@@ -74,13 +78,23 @@ private LocationService  locationService;
 	@RequestMapping(value = "/addAlertsView", method = RequestMethod.GET)
 	public String altersView(Model model, HttpServletRequest request, HttpServletResponse response) {	
 		model.addAttribute("Alert", new Alert());
+		List<CompanyMaster> companyList=new ArrayList<CompanyMaster>();
+		List<Location> listLocations = new ArrayList<Location>();
 		ArrayList<VehicleMaster> vehicleMasters = (ArrayList<VehicleMaster>) vehicleMasterService.listVehicleMasters();
 		model.addAttribute("vehicleMasters", vehicleMasters);
 		
 		ArrayList<VehicleGroup> vehicleGroups = (ArrayList<VehicleGroup>) vehicleGroupService.listVehicleGroup();
 		model.addAttribute("vehicleGroups", vehicleGroups);
 		
-		List<Location> listLocations = (ArrayList<Location>)locationService.listLocations();
+		
+		UserMaster currentUser=(UserMaster) request.getSession().getAttribute(Constant.CURRENT_USER);
+		if(!currentUser.getRoleMaster().getRole().equals(Constant.ROLE_SUPERUSER)){
+			 listLocations = (ArrayList<Location>)locationService.listLocations(currentUser.getCompanyMaster().getId());
+		}else{
+			 listLocations = (ArrayList<Location>)locationService.listLocations();
+		}
+		
+		
 		model.addAttribute("locationList", listLocations);
 		
 		return "alert_master_entry";

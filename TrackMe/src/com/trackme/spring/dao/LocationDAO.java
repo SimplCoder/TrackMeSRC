@@ -11,5 +11,6 @@ public interface LocationDAO {
 	public List<Location> listLocation();
 	public Location getLocationByLocationName(String locationName);
 	public void removeLocation(String locationName);
+	public List<Location> getLocationByCompanyId(Integer companyId);
 
 }
