@@ -98,8 +98,7 @@ private VehicleNotificationService vehicleNotificationService;
 		}else{
 			 listLocations = (ArrayList<Location>)locationService.listLocations();
 		}
-		
-		vehicleNotificationService.sendAlert();
+	
 		model.addAttribute("locationList", listLocations);
 		
 		return "alert_master_entry";

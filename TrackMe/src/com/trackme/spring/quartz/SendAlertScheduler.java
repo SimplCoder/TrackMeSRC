@@ -21,9 +21,9 @@ public class SendAlertScheduler {
 	private VehicleNotificationService vehicleNotificationService;
 	
 	
-	// @Scheduled(cron = "* */2 * * * SAT,SUN,MON")
-	   /* public void sendAlert() {
+	 @Scheduled(cron = "* */2 * * * SUN,MON,TUE,WED,THU,FRI,SAT")
+	   public void sendAlert() {
 	     System.out.println("::::Alert");  
 	     vehicleNotificationService.sendAlert();
-	    }*/
+	    }
 }
