@@ -234,6 +234,9 @@ public class Alert
   @Transient
   private String  modifiedDateShow;
   
+  @Column(name="email")
+  private String email;
+  
   public String getCreatedDateShow() {
 		if(this.createdDate!=null){
 			return Constant.dateFormater.format(this.createdDate);
@@ -368,10 +371,13 @@ public class Alert
 		this.vehicleEntryStatusOut = vehicleEntryStatusOut;
 	}
 
-	
+	public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-	
-	
 	
 }

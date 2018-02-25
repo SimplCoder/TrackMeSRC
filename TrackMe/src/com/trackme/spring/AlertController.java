@@ -30,6 +30,7 @@ import com.trackme.spring.service.CompanyMasterService;
 import com.trackme.spring.service.LocationService;
 import com.trackme.spring.service.VehicleGroupService;
 import com.trackme.spring.service.VehicleMasterService;
+import com.trackme.spring.service.VehicleNotificationService;
 
 
 @Controller
@@ -48,6 +49,10 @@ private VehicleMasterService  vehicleMasterService;
 @Autowired(required=true)
 @Qualifier(value="locationService")
 private LocationService  locationService;
+
+@Autowired
+@Qualifier(value="vehicleNotificationServiceImpl")
+private VehicleNotificationService vehicleNotificationService;
 
 	@Autowired(required=true)
 	@Qualifier(value="alertService")
@@ -94,7 +99,7 @@ private LocationService  locationService;
 			 listLocations = (ArrayList<Location>)locationService.listLocations();
 		}
 		
-		
+		vehicleNotificationService.sendAlert();
 		model.addAttribute("locationList", listLocations);
 		
 		return "alert_master_entry";

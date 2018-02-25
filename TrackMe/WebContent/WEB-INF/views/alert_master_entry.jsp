@@ -142,7 +142,6 @@
 										
 										</form:select>
 										
-										<label class="checkbox-inline i-checks">Vehicle Entry Status: </label>
 											<label class="checkbox-inline i-checks">In </label>
                                             <form:checkbox class="i-checks" path="vehicleEntryStatusIn" id="Checkbox7"/>&nbsp;&nbsp;
 											<label class="checkbox-inline i-checks">Out </label>
